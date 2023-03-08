@@ -1,8 +1,14 @@
+#ifndef PUBLIC_H
+#define PUBLIC_H
+
 #include <fstream>
+#include <iostream>
 
-std::ofstream ppmFS("crt_output_image.ppm", std::ios::out | std::ios::binary);
 
-static const int imageWidth = 1920;
-static const int imageHeight = 1080;
-
+static const int iWidth = 400;
+static const int iHeight = 300 ;
 static const int maxColorComponent = 255;
+
+
+
+#endif

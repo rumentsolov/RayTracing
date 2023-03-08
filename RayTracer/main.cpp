@@ -1,19 +1,23 @@
 #include "publics.h"
+#include "files.h"
+#include "matrix.h"
 
 int main() {
 	
-	ppmFS << "P3\n";
-	ppmFS << imageWidth << " " << imageHeight << "\n";
-	ppmFS << maxColorComponent << "\n";
 
-	for (int rowIdx = 0; rowIdx < imageHeight; ++rowIdx) {
-		for (int colIdx = 0; colIdx < imageWidth; ++colIdx) {
-			ppmFS << "0 0 255\t";
-		}
-		ppmFS << "\n";
-	}
+	Matrix *ptr;
 
-	ppmFS.close();
+	std::string sum = "0 255 255\t";
+
+	ptr = new Matrix(iWidth,iHeight,sum);
+
+	openFile();
+
+	ppmFS << *ptr;
+	
+	closeFile();
+
+    delete ptr;
 
 	return 0;
 }
