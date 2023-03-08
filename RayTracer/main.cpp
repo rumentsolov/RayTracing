@@ -1,19 +1,22 @@
 #include "publics.h"
 #include "files.h"
 #include "matrix.h"
+#include "generateCubes.h"
 
 int main() {
 	
-
-	Matrix *ptr;
-
-	std::string sum = "0 255 255\t";
-
-	ptr = new Matrix(iWidth,iHeight,sum);
+	int totalCubes = 9;
 
 	openFile();
 
+	Matrix *ptr;
+
+	ptr = new Matrix(iWidth,iHeight,"0 0 0\t");
+
+	generateCubes(*ptr);
+
 	ppmFS << *ptr;
+
 	
 	closeFile();
 

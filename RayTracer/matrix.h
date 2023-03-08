@@ -14,7 +14,6 @@ class Matrix{
                 value = value_;
             }
         }
-
     
 };
 
@@ -26,6 +25,5 @@ void operator<<(std::ostream &out, const Matrix &m) {
             }
         
 }
-
 
 #endif

@@ -5,8 +5,8 @@
 #include <iostream>
 
 
-static const int iWidth = 400;
-static const int iHeight = 300 ;
+static const int iWidth = 900;
+static const int iHeight = 900 ;
 static const int maxColorComponent = 255;
 
 
