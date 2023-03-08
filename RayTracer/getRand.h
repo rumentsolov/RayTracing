@@ -4,16 +4,34 @@
 
 #include "publics.h"
 
+
+std::string gen_random(const int len) {
+    srand((unsigned)time(NULL));
+
+    static const char alphanum[] =
+        "0123456789" ;
+        //"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        //"abcdefghijklmnopqrstuvwxyz";
+    std::string tmp_s;
+    tmp_s.reserve(len);
+
+    for (int i = 0; i < len; ++i) {
+        tmp_s += alphanum[rand() % (sizeof(alphanum) - 1)];
+    }
+    
+    return tmp_s;
+}
+
 std::string getRand(){
 
-     srand(time(0));
-    int first = rand() % ((maxColorComponent - 0) + 1) ;
+    std::string first = gen_random(1); //&(std::to_string(randOm));
 
-    int second = rand() % ((maxColorComponent - 0) + 1) ;
+    std::string second = gen_random(1);
 
-    int third = rand() % ((maxColorComponent - 0) + 1) ;
+    std::string third = gen_random(1);
 
-    std::string color = std::to_string(first) + " " + std::to_string(second) + " " + std::to_string(third) + "\t" ;
+
+    std::string color = first + " " + second + " " + third + "\t" ;
 
     return color;
 }

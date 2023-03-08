@@ -1,6 +1,6 @@
 #include "publics.h"
 
-std::ofstream ppmFS("the_image.ppm", std::ios::out | std::ios::binary);
+std::ofstream ppmFS("the_image.txt", std::ios::out | std::ios::binary);
 
 void openFile() {
 

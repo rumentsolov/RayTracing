@@ -5,10 +5,10 @@
 #include <iostream>
 
 
-static const int iWidth = 900;
-static const int iHeight = 900 ;
+static const int iWidth = 10;
+static const int iHeight = 10 ;
 static const int maxColorComponent = 255;
 
-
+static const int totalCubes = 9;
 
 #endif
