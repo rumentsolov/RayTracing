@@ -7,9 +7,9 @@ using namespace std::chrono;
 
 int main() {
     auto start = high_resolution_clock::now();
-    iWidth = 1920;
-    iHeight = 1080;
-    squares = 207360;
+    iWidth = 100;
+    iHeight = 100;
+    squares = iWidth*iHeight;
 
     Matrix matrix;
 
