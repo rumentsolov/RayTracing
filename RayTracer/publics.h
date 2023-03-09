@@ -5,10 +5,14 @@
 #include <iostream>
 
 
-static const int iWidth = 10;
-static const int iHeight = 10 ;
+int iWidth ;
+int iHeight ;
+int squares;
+
 static const int maxColorComponent = 255;
 
 static const int totalCubes = 9;
+
+static const std::string fileName = "the_image.ppm";
 
 #endif
