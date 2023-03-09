@@ -9,17 +9,15 @@ int main() {
     auto start = high_resolution_clock::now();
     iWidth = 1920;
     iHeight = 1080;
-    squares = 10;
-    int arr[1920*1080] = {0};
+    squares = 207360;
 
     Matrix matrix;
 
-    //getSquares(matrix);
+    getSquares(matrix);
 
-    std::cout << sizeof(arr) << std::endl;
-    //matrix.record();
+    matrix.record();
     //matrix.print();
-    
+
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start);
     std::cout.setf(std::ios::fixed);

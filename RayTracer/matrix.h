@@ -38,21 +38,14 @@ public:
 
 
         void change(const int startHeight, const int startWigth , const int endHeight, const int endWigth, const std::string & put){
-            for (int i = 0; i < iHeight; i++) {
-                for (int j = 0; j < iWidth; j++) {
-
-                if( 
-                    i>=startHeight && 
-                    j>=startWigth && 
-                    i<endHeight && 
-                    j<endWigth)
-
+            for (int i = startHeight; i < endHeight; i++) 
+                for (int j = startWigth; j < endWigth; j++) 
                     str[i][j] = put;
-                }
-            }
+                
+            
         }
         
-         void record(){
+        void record(){
 
             std::ofstream ppmFS(fileName, std::ios::out | std::ios::binary);
 
