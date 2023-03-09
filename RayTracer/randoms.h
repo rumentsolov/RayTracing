@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <time.h>
 
+#include "progress.h"
+
 bool isSecond;
 
 int randInt(){
@@ -41,7 +43,15 @@ std::string getRandNum(){
 
     std::string color = firstString + " " + secondString + " " + thirdString + "\t "; //&(std::to_string(randOm));
 
-    std::cout << color << std::endl;
+
+    // to measure the progress of the creation
+    squaresCreated++;
+    if(squaresCreated == (squares/100)) {
+    squaresCreated = 0;
+    getProgr();
+    }
+    
+    
 
     return color;
 }
