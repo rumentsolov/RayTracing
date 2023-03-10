@@ -10,12 +10,10 @@ int main() {
     auto start = high_resolution_clock::now();
 
     imageX = 900;
-
     imageY = 900;
-    
     squares = 16 ;//imageY*imageX;
 
-    radius = 300;
+    radius = 200;
 
     Matrix matrix;
 

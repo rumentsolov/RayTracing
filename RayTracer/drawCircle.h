@@ -12,30 +12,27 @@ void drawCircle(Matrix &m){
     radius -=1;
 
     Point center((imageX /2 ) , (imageY /2 ));
-
     start.setX(imageX/2);
     start.setY(imageY/2);
 
-    std::string put = "255 255 255  "; // "255 255 255  "
+    std::string put = getRandNum(); //"000 000 000  "; // "255 255 255  "
     
     const double PI = 3.14159;
 
-    //m.draw(put);
 
-    //double angle=0.785 ;
     
-   for (double angle=0; angle<=2*PI; angle+=0.001){
+   for (double angle=0; angle<=(PI); angle+=0.01){ // drawing from top to bottom
 
-       // end.setX( center.getX() + radius*sin( angle ));
-        //end.setY( center.getY() + radius*cos( angle ));
-        
-        circlePoints.insert( end );
+    start.setX( center.getX() - radius*sin( angle ));
+    start.setY( center.getY() - radius*cos( angle ));
+
+    end.setX( center.getX() + radius*sin( angle ));
+    end.setY( center.getY() + radius*cos( angle ));
+
+    circlePoints.insert( end );
+
+    m.draw(put);
    }
-       // m.draw(put);
-
-    for(auto i : circlePoints){
-        std::cout << i.getX() << ":"<< i.getY() << std::endl;
-    }
 }
 
 
