@@ -9,10 +9,6 @@ int imageX;
 int imageY;
 int squares;
 
-int startX;
-int startY;
-int endX;
-int endY;
 
 int radius;
 
@@ -25,7 +21,7 @@ static const int totalCubes = 9;
 
 static const std::string fileName = "the_image.ppm";
 
-Point start(startX ,startY);
-Point end(endX,endY);
+Point start(0,0);
+Point end(0,0);
 
 #endif

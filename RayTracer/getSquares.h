@@ -19,18 +19,14 @@ void getSquares( Matrix &matrix){
     end.setX(movementX);
     end.setY(movementY);
 
-
     std::string color;
 
     for( int j = 0; j < boxesInAxis; j++ ){
             start.setX(0);
             end.setX(movementX);
-
             for( int i = 0; i < boxesInAxis; i++ ){
-
                         color = getRandNum();
                         matrix.draw(color);
-
                         start.addX(movementX);
                         end.addX(movementX);
             }
