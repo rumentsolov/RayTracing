@@ -1,8 +1,8 @@
+#pragma once
 #ifndef PUBLICS_H
 #define PUBLICS_H
 
-#include <fstream>
-#include <iostream>
+#include <string>
 #include "point.h"
 
 int imageX;

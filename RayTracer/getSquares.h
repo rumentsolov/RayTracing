@@ -1,8 +1,10 @@
+#pragma once
 #include "publics.h"
+
 #include "matrix.h"
 #include "randoms.h"
 #include <cmath>
-
+#include "point.h"
 
 void getSquares( Matrix &matrix){
 
@@ -13,7 +15,7 @@ void getSquares( Matrix &matrix){
 
     start.setX(0);
     start.setY(0);
-    
+
     end.setX(movementX);
     end.setY(movementY);
 

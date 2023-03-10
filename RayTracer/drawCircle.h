@@ -1,7 +1,11 @@
+#pragma once
 #ifndef DRAW_CIRCLE_H
 #define DRAW_CIRCLE_H
 
+
+#include "point.h"
 #include "publics.h"
+#include "matrix.cpp"
 #include "matrix.h"
 #include <set>
 
