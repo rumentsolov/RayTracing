@@ -1,19 +1,27 @@
 #include "publics.h"
 #include "matrix.h"
 #include "getSquares.h"
+#include "drawCircle.h"
 #include <chrono>
 
 using namespace std::chrono;
 
 int main() {
     auto start = high_resolution_clock::now();
-    iWidth = 100;
-    iHeight = 100;
-    squares = iWidth*iHeight;
+
+    imageX = 900;
+
+    imageY = 900;
+    
+    squares = 16 ;//imageY*imageX;
+
+    radius = 300;
 
     Matrix matrix;
 
     getSquares(matrix);
+
+    drawCircle(matrix);
 
     matrix.record();
     //matrix.print();

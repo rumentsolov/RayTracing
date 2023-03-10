@@ -8,32 +8,31 @@ void getSquares( Matrix &matrix){
 
     int boxesInAxis = sqrt(squares);
 
-    int startX = 0;
-    int movementX = iWidth/boxesInAxis;
-    int endX = movementX;
+    int movementX = imageX/boxesInAxis;
+    int movementY = imageY/boxesInAxis;
 
-    int startY = 0;
-    int movementY = iHeight/boxesInAxis;
-    int endY = movementY;
+    start.setX(0);
+    start.setY(0);
     
+    end.setX(movementX);
+    end.setY(movementY);
 
 
     std::string color;
 
     for( int j = 0; j < boxesInAxis; j++ ){
-            startX =0;
-            endX = movementX;
+            start.setX(0);
+            end.setX(movementX);
 
             for( int i = 0; i < boxesInAxis; i++ ){
 
                         color = getRandNum();
-                        matrix.change(startY , startX , endY , endX, color);
+                        matrix.draw(color);
 
-                        startX += movementX;
-                        endX += movementX;
+                        start.addX(movementX);
+                        end.addX(movementX);
             }
-
-             startY += movementY;
-             endY += movementY;  
+            start.addY(movementY);
+            end.addY(movementY);
     }
 }
