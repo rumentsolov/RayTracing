@@ -5,7 +5,11 @@
 //! Public values that my program uses to work with
 
 #include <string>
+#include <chrono>
+
 #include "point.h"
+
+using namespace std::chrono;
 
 int imageX;                                 // the size of the image by X axis
 int imageY;                                 // the size of the image by Y axis
@@ -22,6 +26,9 @@ static const std::string fileName =
 "the_image.ppm";                            // the image name
 
 Point start(0,0);                           // starting point where the matrix draw functions starts
-Point end(0,0);                             // ending point where the matrix draw functions ends
+Point end(0,0);              
+
+
+auto startTime = high_resolution_clock::now();               // ending point where the matrix draw functions ends
 
 #endif

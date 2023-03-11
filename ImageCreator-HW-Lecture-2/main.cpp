@@ -3,10 +3,12 @@
 #include "matrix.cpp"
 
 #include "matrix.h"
+#include "clock.h"
 #include "getSquares.h"
 #include "drawCircle.h"
 
 int main() {
+
 
     //! The algorithm generates ppm image filled with squares with different colors and a circle in the center of the image
     //! All user inputs are in image PIXELS
@@ -34,6 +36,8 @@ int main() {
 
     matrix.record(); // Records the matrix to a ppm file
     //matrix.print(); // Also console print for debugging is avalable
-
+    
+    clockStop(); // to stop the clock and to print the time completion
+    
 	return 0;
 }
