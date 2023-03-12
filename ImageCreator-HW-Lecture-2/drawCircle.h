@@ -17,9 +17,9 @@ void drawCircle(Matrix &m){
 
     std::string put = getRandNum(); //"000 000 000  "; // "255 255 255  "
     
-    const double PI = 3.14159;
+    const double maxAngle = 1.570796327; // half of the PI because the circle is mirrored by Y axis
 
-   for (double angle=0; angle<=(PI); angle+=0.01){ // drawing from top to bottom, the circle is mirrored by Y axis
+   for (double angle=0; angle<=(maxAngle); angle+=0.001){ // drawing from top->bottom, row by row
 
     start.setX( center.getX() - radius*sin( angle ));
     start.setY( center.getY() - radius*cos( angle ));

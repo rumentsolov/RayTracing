@@ -4,6 +4,8 @@
 #include "publics.h"
 
 using namespace std::chrono;
+
+//! To measure the time completion  of the program
 void clockStop() {
     auto stopTime = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stopTime - startTime);

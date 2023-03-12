@@ -9,8 +9,7 @@ int randInt(){
     struct timespec ts;
     clock_gettime(CLOCK_MONOTONIC, &ts);
     srand((time_t)ts.tv_nsec); //! using nano-seconds instead of seconds 
-    randNum = rand()%1000;
-    while(randNum >= maxColorComponent) randNum -= maxColorComponent; // this limits the random number generation , 250
+    randNum = rand()%maxColorComponent; 
     return randNum;
 }
 
@@ -21,15 +20,6 @@ std::string getRandNum(){
     int secondInt  = randInt();
     int thirdInt  = randInt();
 
-    std::string firstString = std::to_string(firstInt);
-    while(firstString.size() < 3) firstString.insert(0,"0");
-
-    std::string secondString = std::to_string(secondInt);
-    while(secondString.size() < 3) secondString.insert(0,"0");
-
-    std::string thirdString = std::to_string(thirdInt);
-    while(thirdString.size() < 3) thirdString.insert(0,"0");
-
-    std::string color = firstString + " " + secondString + " " + thirdString + "\t"; //
+    std::string color = std::to_string(firstInt) + " " + std::to_string(secondInt) + " " + std::to_string(thirdInt) + "\t"; //
     return color;
 }

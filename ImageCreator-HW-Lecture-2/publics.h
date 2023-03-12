@@ -19,16 +19,15 @@ int radius;                                 // the radius of the circle that use
 
 static const int maxColorComponent = 255;
 
-std::string zeros = "000";
-std::string colorBlack = zeros + " " + zeros + " " + zeros + "\t";
+std::string colorBlack = "000 000 000\t";
 
 static const std::string fileName = 
 "the_image.ppm";                            // the image name
 
 Point start(0,0);                           // starting point where the matrix draw functions starts
-Point end(0,0);              
+Point end(0,0);                             // ending point where the matrix draw functions ends
 
 
-auto startTime = high_resolution_clock::now();               // ending point where the matrix draw functions ends
+auto startTime = high_resolution_clock::now(); // starts the clock // netter here than inside main.cpp
 
 #endif
