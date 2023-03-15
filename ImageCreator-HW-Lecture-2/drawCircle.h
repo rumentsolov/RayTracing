@@ -15,7 +15,7 @@ void drawCircle(Matrix &m){
     start.setX(imageX/2);
     start.setY(imageY/2);
 
-    std::string put = getRandNum(); //"000 000 000  "; // "255 255 255  "
+    PixelColor put = getRandNum(); //"000 000 000  "; // "255 255 255  "
     
     const double maxAngle = 1.570796327; // half of the PI because the circle is mirrored by Y axis
 

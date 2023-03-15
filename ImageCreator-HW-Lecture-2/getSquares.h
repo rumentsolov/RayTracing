@@ -23,7 +23,7 @@ void getSquares( Matrix &matrix){
     end.setX(stepByX);
     end.setY(stepByY);
 
-    std::string color;
+    PixelColor color;
 
     //! Iteration true the squares in the image and calling draw() function for every square
     for( int y = 0; y < squaresY; y++ ){

@@ -14,12 +14,14 @@ int randInt(){
 }
 
 //? generates random numbers every time software aks for it
-std::string getRandNum(){ 
+PixelColor getRandNum(){ 
 
-    int firstInt = randInt();
-    int secondInt  = randInt();
-    int thirdInt  = randInt();
+    
 
-    std::string color = std::to_string(firstInt) + " " + std::to_string(secondInt) + " " + std::to_string(thirdInt) + "\t"; //
+    unsigned char first = randInt();
+    unsigned char second  = randInt();
+    unsigned char third  = randInt();
+
+    PixelColor color (first,second,third);
     return color;
 }

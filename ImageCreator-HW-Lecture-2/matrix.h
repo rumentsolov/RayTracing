@@ -8,16 +8,16 @@
 //? This is the image's pixel color holder
 
 // ! the matrix should be printed from left->right && top->bottom as the image is created in the screen
-class Matrix { 
+class Matrix :public PixelColor{ 
 
 public:
-    std::string** str;
+    PixelColor** str;
     // the constructor allocates heap memory and fills it with "black color"
     Matrix(){
-        str = new std::string*[imageX]; // Allocates memory for columns
+        str = new PixelColor*[imageX]; // Allocates memory for columns
 
         for (int x = 0; x < imageX; x++)
-            str[x] = new std::string[imageY]; //  Allocates memory for rows
+            str[x] = new PixelColor[imageY]; //  Allocates memory for rows
         
         // Fills the matrix with black color
         for (int y = 0; y < imageY; y++){  
@@ -26,14 +26,14 @@ public:
             }
         }
     }
-        void print();                       // only for easier debugging
-        void draw(const std::string & put); // changes the colors of the matrix
-        void record();                      // the ostream record
+        void print();                      // only for easier debugging
+        void draw(const PixelColor & put); // changes the colors of the matrix
+        void record();                     // the ostream record
 };
 
 //! VS Code with G++ & linux get angry when I place the code bellow in matrix.cpp where should stands :(
     
-void Matrix::draw(const std::string & put){ // colors all the pixels between std::string start(x,y) and std::string end(x,y)
+void Matrix::draw(const PixelColor& put){ // colors all the pixels between std::string start(x,y) and std::string end(x,y)
             for (int y = start.getY(); y < end.getY(); y++) 
                 for (int x = start.getX(); x < end.getX(); x++) 
                     str[x][y] = put;
