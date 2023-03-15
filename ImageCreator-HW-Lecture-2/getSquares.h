@@ -9,7 +9,7 @@
 //! Splits the matrix into squares/areas
 //! Every square is filled with colors by Matrix.draw() function
 
-void getSquares( Matrix &matrix){
+void getSquares( ImgBuffer &matrix){
 
     //! Starts from the left top corner
     int stepByX = imageX/squaresX;         // The step by X axis

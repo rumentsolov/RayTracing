@@ -7,7 +7,7 @@
 #include "publics.h"
 
 
-void drawCircle(Matrix &m){
+void drawCircle(ImgBuffer &m){
 
     radius -=1;
 

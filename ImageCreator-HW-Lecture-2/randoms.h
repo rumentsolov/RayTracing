@@ -16,8 +16,6 @@ int randInt(){
 //? generates random numbers every time software aks for it
 PixelColor getRandNum(){ 
 
-    
-
     unsigned char first = randInt();
     unsigned char second  = randInt();
     unsigned char third  = randInt();

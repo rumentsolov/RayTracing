@@ -13,21 +13,27 @@ int main() {
     //! All user inputs are in image PIXELS
 
     // The size of the image by X axis
-    imageX = 1920; 
+    int imageX = 1920; 
 
     // The size of the image by Y axis
-    imageY = 1080;
+    int imageY = 1080;
+
+    Publics interface(imageX, imageY);
 
     // The number of squares that user want to be drawn by X and Y axes
     // The algorithm is good enough so every pixel can be colored randomly => imageY*imageX; 
     // ! ((imageX % squaresX == 0 ) && (imageY % squaresY == 0)) => if this is false, the biggest possible size will be used and the rest of the image will be black
-    squaresX = imageX/30; 
-    squaresY = imageY/30;
+    int squaresX = imageX/30; 
+    int squaresY = imageY/30;
+
+    interface.setSquares(squaresX,squaresY);
 
     // The radius of the circle that user wants to be drawn
-    radius = 300 ; 
+    int radius = 300 ; 
+    interface.setRadius(radius);
+    
 
-    Matrix matrix; // Create a simple matrix in the heap to work with
+    ImgBuffer matrix; // Create a simple buffer in the heap to work with
 
     getSquares(matrix); // Fills the matrix fields with random colors by squares
 
