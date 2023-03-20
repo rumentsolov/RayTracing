@@ -1,3 +1,6 @@
+#ifndef RANDOM_H
+#define RANDOM_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -22,5 +25,8 @@ PixelColor getRandNum(){
     unsigned char third  = randInt();
 
     PixelColor color(first,second,third);
+    
     return color;
 }
+
+#endif

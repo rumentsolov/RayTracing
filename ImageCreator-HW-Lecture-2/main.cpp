@@ -1,9 +1,10 @@
 #include "imgBuff.h"
 #include "drawSquares.h"
-//#include "drawCircle.h"
+#include "drawCircle.h"
+#include "clock.h"
 
 int main() {
-
+    auto startTime = high_resolution_clock::now();
     //! The algorithm generates ppm image filled with squares with different colors and a circle in the center of the image
     //! All user inputs are in image PIXELS
 
@@ -26,10 +27,11 @@ int main() {
 
     drawSquares(buff, squaresX , squaresY ); // Fills the image buffer fields with random colors by squares
 
-    //drawCircle(buff , radius ); // Draws the circle with color in the center of the image
+    drawCircle(buff , radius ); // Draws the circle with color in the center of the image
 
     buff.record(); // Records the image buffer to a ppm file
-    //image buffer.print(); // Also console print for debugging is avalable
+
+    clockStop(startTime);
 
 	return 0;
 }
