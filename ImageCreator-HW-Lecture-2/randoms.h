@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
+#include "pixelColor.h"
 
 //? since the program works very quick, different random numbers generation is real nigthmare without the code below
 int randInt(){ 
@@ -9,7 +10,7 @@ int randInt(){
     struct timespec ts;
     clock_gettime(CLOCK_MONOTONIC, &ts);
     srand((time_t)ts.tv_nsec); //! using nano-seconds instead of seconds 
-    randNum = rand()%maxColorComponent; 
+    randNum = rand()%255; 
     return randNum;
 }
 
@@ -20,6 +21,6 @@ PixelColor getRandNum(){
     unsigned char second  = randInt();
     unsigned char third  = randInt();
 
-    PixelColor color (first,second,third);
+    PixelColor color(first,second,third);
     return color;
 }

@@ -1,11 +1,6 @@
-#include "publics.h"
-
-#include "matrix.cpp"
-
-#include "matrix.h"
-#include "clock.h"
-#include "getSquares.h"
-#include "drawCircle.h"
+#include "imgBuff.h"
+#include "drawSquares.h"
+//#include "drawCircle.h"
 
 int main() {
 
@@ -18,7 +13,7 @@ int main() {
     // The size of the image by Y axis
     int imageY = 1080;
 
-    Publics interface(imageX, imageY);
+    ImgBuff buff(imageX, imageY);
 
     // The number of squares that user want to be drawn by X and Y axes
     // The algorithm is good enough so every pixel can be colored randomly => imageY*imageX; 
@@ -26,23 +21,15 @@ int main() {
     int squaresX = imageX/30; 
     int squaresY = imageY/30;
 
-    interface.setSquares(squaresX,squaresY);
-
     // The radius of the circle that user wants to be drawn
     int radius = 300 ; 
-    interface.setRadius(radius);
-    
 
-    ImgBuffer matrix; // Create a simple buffer in the heap to work with
+    drawSquares(buff, squaresX , squaresY ); // Fills the image buffer fields with random colors by squares
 
-    getSquares(matrix); // Fills the matrix fields with random colors by squares
+    //drawCircle(buff , radius ); // Draws the circle with color in the center of the image
 
-    drawCircle(matrix); // Draws the circle with color in the center of the image
+    buff.record(); // Records the image buffer to a ppm file
+    //image buffer.print(); // Also console print for debugging is avalable
 
-    matrix.record(); // Records the matrix to a ppm file
-    //matrix.print(); // Also console print for debugging is avalable
-    
-    clockStop(); // to stop the clock and to print the time completion
-    
 	return 0;
 }
