@@ -1,5 +1,5 @@
-#ifndef RAINBOW_H
-#define RAINBOW_H
+#ifndef POINT_H
+#define POINT_H
 
 class Point{
     float x;
@@ -31,4 +31,4 @@ class Point{
     float sqrtZ() { return z*z;}
 };
 
-#endif
+#endif //! POINT_H

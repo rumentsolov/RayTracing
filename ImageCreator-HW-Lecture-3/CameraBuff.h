@@ -84,4 +84,4 @@ void CameraBuff::print(){
     }
 }
 
-#endif
+#endif //! IMG_BUFF_H

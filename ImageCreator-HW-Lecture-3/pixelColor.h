@@ -17,10 +17,19 @@ PixelColor(unsigned char first_ ,unsigned char second_ , unsigned char third_) :
         this->second = other.second;
         this->third = other.third;
     }
-
 };
 
     void operator<<(std::ostream &ppmFS , PixelColor &x){
         ppmFS << (int)x.first <<" "<< (int)x.second<<" " << (int)x.third;
     }
-#endif
+
+    PixelColor operator*(double t, PixelColor &x){
+            return PixelColor(
+            x.first *= t,
+            x.second *= t,
+            x.third *= t
+        );
+    }
+    
+    
+#endif //! PIXELCOLOR_H

@@ -1,9 +1,8 @@
 #include "CameraBuff.h"
 #include "rendering.h"
-#include "clock.h"
 
 int main() {
-    auto startTime = high_resolution_clock::now();
+
     //! The algorithm generates ppm image filled with squares with different colors and a circle in the center of the image
     //! All user inputs are in image PIXELS
 
@@ -21,8 +20,6 @@ int main() {
     Rendering(buff, imageX , imageY ); // Fills the image buffer fields with random colors by squares
 
     buff.record(); // Records the image buffer to a ppm file
-
-    clockStop(startTime);
 
 	return 0;
 }

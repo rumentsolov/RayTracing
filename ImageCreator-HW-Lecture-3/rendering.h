@@ -1,12 +1,9 @@
-#ifndef DRAW_SQUARES_H
-#define DRAW_SQUARES_H
+#ifndef RENDER_H
+#define RENDER_H
 
 #include <cmath>
 
 #include "CameraBuff.h"
-
-
-// #include "randoms.h" // in case I neeed rndm colors
 
 //! Splits the m into squares/areas
 //! Every square is filled with colors by m.draw() function
@@ -27,7 +24,7 @@ void Rendering( CameraBuff &m , int &squaresX , int &squaresY ){
             end.setX(stepByX);
 
             for( int x = 0; x < squaresX; x++ ){
-                        PixelColor color = getRandNum();
+                        PixelColor color('0','0','0');
                         m.draw(start,end ,color);
                         start.addX(stepByX);
                         end.addX(stepByX);
@@ -37,4 +34,4 @@ void Rendering( CameraBuff &m , int &squaresX , int &squaresY ){
     }
 }
 
-#endif
+#endif //!RENDER_H

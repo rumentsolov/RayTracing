@@ -2,6 +2,7 @@
 #define RAY_H
 
 #include "vec.h"
+#include "point.h"
 
 class ray {
     public:
@@ -21,4 +22,4 @@ class ray {
         }
 };
 
-#endif
+#endif //! RAY_H
