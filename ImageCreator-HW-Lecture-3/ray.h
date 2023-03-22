@@ -2,22 +2,21 @@
 #define RAY_H
 
 #include "vec.h"
-#include "point.h"
 
-class ray {
+class Ray {
     public:
-    Point orig;
-    Vec dir;
+        Vec orig;
+        Vec dir;
 
-        ray() {}
-        ray(const Point& origin, const Vec& direction)
+        Ray(): orig(0,0,0), dir(0,0,0){}; 
+        Ray(const Vec& origin, const Vec& direction)
             : orig(origin), dir(direction)
         {}
 
-        Point origin() const  { return orig; }
+        Vec origin() const  { return orig; }
         Vec direction() const { return dir; }
 
-        Point at(float t) const {
+        Vec at(float t) const {
             return orig + t*dir;
         }
 };

@@ -2,7 +2,7 @@
 #define IMG_BUFF_H
 
 #include "pixelColor.h"
-#include "point.h"
+#include "vec.h"
 
 #include <iostream>
 
@@ -40,8 +40,8 @@ public:
         }
     }
         void print();                      // only for easier debugging
-        void draw(const Point &start, 
-        const Point & end, 
+        void draw(const Vec &start, 
+        const Vec & end, 
         const PixelColor& put);            // changes the colors of the CameraBuff
         void record();                     // the ostream record
 
@@ -55,7 +55,7 @@ public:
 
 //! VS Code with G++ & linux get angry when I place the code bellow in CameraBuff.cpp where should stands :(
     
-void CameraBuff::draw(const Point &start, const Point & end, const PixelColor& put){ // colors all the pixels between std::string start(x,y) and std::string end(x,y)
+void CameraBuff::draw(const Vec &start, const Vec & end, const PixelColor& put){ // colors all the pixels between std::string start(x,y) and std::string end(x,y)
             for (int y = start.getY(); y < end.getY(); y++) 
                 for (int x = start.getX(); x < end.getX(); x++) 
                     str[x][y] = put;

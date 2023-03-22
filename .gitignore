@@ -1,3 +1,5 @@
 $ cat .gitignore
 ImageCreator-HW-Lecture-2 copy.vscode/
 main
+
+.fake

@@ -1,63 +1,73 @@
 #ifndef VEC_H
 #define VEC_H
 
-#include "point.h"
 #include <cmath>
 
-class Vec : public Point{
+class Vec {
+
+    float x;
+    float y;
+    float z;
+
     public:
-        Point vertex;
-        Vec() : vertex{0,0,0} {} 
-        Vec(float x, float y, float z) : vertex{x, y, z} {}
+    Vec(): x(0.0), y(0.0) , z(0.0){}; 
+    Vec( float x_, float y_ , float z_ ): x(x_), y(y_), z(z_) {};
 
-        float length() {
-            return sqrt(vertex.sqrtX() + vertex.sqrtY() + vertex.sqrtZ());
-        }
-    
-    Vec operator-() const { return Vec(-vertex.getX(), -vertex.getY(), -vertex.getZ()); }
-    
-    Vec& operator+=(const Vec &other) {
-            vertex.setX(other.vertex.getX()) ;
-            vertex.setY(other.vertex.getY()) ;
-            vertex.setZ(other.vertex.getZ()) ;
-            return *this;
-        }
-
-    // to not write everywhere like ...vertex.setX()
-    float const getX() const{ return vertex.x;}
-    float const getY() const { return vertex.y;}
+    float const getX() const{ return x;}
+    float const getY() const { return y;}
     float const getZ() const { return z;}
 
-    void setX(float x_) { this->vertex.x = x_;}
-    void setY(float y_) { this->vertex.y = y_;}
-    void setZ(float y_) { this->vertex.y = y_;}
+    void setX(float x_) { this->x = x_;}
+    void setY(float y_) { this->y = y_;}
+    void setZ(float y_) { this->y = y_;}
 
-    void addX(float x_) { this->vertex.x += x_;}
-    void addY(float y_) { this->vertex.y += y_;}
-    void addZ(float z_) { this->vertex.z += z_;}
-
-    void multiplicateX(float x_) { this->vertex.x *= x_;}
-    void multiplicateY(float y_) { this->vertex.y *= y_;}
-    void multiplicateZ(float z_) { this->vertex.z *= z_;}
+    void addX(float x_) { this->x += x_;}
+    void addY(float y_) { this->y += y_;}
+    void addZ(float z_) { this->z += z_;}
 
     float sqrtX() { return x*x;}
     float sqrtY() { return y*y;}
     float sqrtZ() { return z*z;}
-    
-};
 
-Vec operator+(const Point&first, const Vec&second){
-    return Vec(
-        first.getX() + second.getX(),
-        first.getY() + second.getY(),
-        first.getZ() + second.getZ() );
+
+        float length() {
+            return sqrt(sqrtX() + sqrtY() + sqrtZ());
+        }
+    
+        Vec operator-() const { return Vec(-getX(), -getY(), -getZ()); }
+        
+        Vec& operator+=(const Vec &other) {
+            setX(other.getX()) ;
+            setY(other.getY()) ;
+            setZ(other.getZ()) ;
+            return *this;
+        }
+
+        Vec& operator*(float t){
+        setX(getX()*t) ;
+        setY(getY()*t) ;
+        setZ(getZ()*t) ;
+        return *this;
+        }
+
+
+        Vec& operator/=(const float t) {
+        return *this * (1/t);
 }
+};
 
 Vec operator+(const Vec&first, const Vec&second){
     return Vec(
         first.getX() + second.getX(),
         first.getY() + second.getY(),
         first.getZ() + second.getZ() );
+}
+
+Vec operator-(const Vec&first, const Vec&second){
+    return Vec(
+        first.getX() - second.getX(),
+        first.getY() - second.getY(),
+        first.getZ() - second.getZ() );
 }
 
 Vec operator*(const Vec&first, const Vec&second){
@@ -67,34 +77,26 @@ Vec operator*(const Vec&first, const Vec&second){
         first.getZ() * second.getZ() );
 }
 
-Vec operator*(float t,const Vec&first){
-    return Vec(
-        first.getX() * t,
-        first.getY() * t,
-        first.getZ() * t );
+Vec operator*(float t,const Vec&someVec){
+     return Vec(
+        someVec.getX() * t,
+        someVec.getY() * t,
+        someVec.getZ() * t );
 }
 
- Vec& operator/=(const float t) {
-            return *this *= 1/t;
-        }
+Vec operator/(Vec&someVec,float t){
+    return Vec(
+        someVec.getX() * (1/t),
+        someVec.getY() * (1/t),
+        someVec.getZ() * (1/t) );
+}
 
 Vec unit_vector(Vec vec) {
     return vec / vec.length();
 }
 
+std::ostream& operator<<(std::ostream& os, const Vec& someVec){
+    return os << someVec.getX() << " " << someVec.getY() << " " << someVec.getZ() << std::endl;
+}
+
 #endif //!VEC_H
-
-/*
-        
-
-       
-
-        Vec& operator*=(const float t) {
-            vertex.multiplicateX(t);
-            vertex.multiplicateY(t);
-            vertex.multiplicateZ(t);
-            return *this;
-        }
-
-       
-*/
