@@ -8,8 +8,8 @@
 
 //? This is the image's pixel color holder
 
-// ! the ImgBuff should be printed from left->right && top->bottom as the image is created in the screen
-class ImgBuff :public PixelColor { 
+// ! the CameraBuff should be printed from left->right && top->bottom as the image is created in the screen
+class CameraBuff :public PixelColor { 
 
 public:
     int imageX;                                 // the size of the image by X axis
@@ -24,7 +24,7 @@ public:
     PixelColor** str;
     // the constructor allocates heap memory and fills it with "black color"
 
-    ImgBuff(int imageX_, int imageY_) : imageX(imageX_), imageY(imageY_)
+    CameraBuff(int imageX_, int imageY_) : imageX(imageX_), imageY(imageY_)
     {
         PixelColor colorBlack(0,0,0);
         str = new PixelColor*[imageX]; // Allocates memory for columns
@@ -32,7 +32,7 @@ public:
         for (int x = 0; x < imageX; x++)
             str[x] = new PixelColor[imageY]; //  Allocates memory for rows
         
-        // Fills the ImgBuff with black color
+        // Fills the CameraBuff with black color
         for (int y = 0; y < imageY; y++){  
             for (int x = 0; x < imageX; x++) {
             str[x][y] = colorBlack;
@@ -42,10 +42,10 @@ public:
         void print();                      // only for easier debugging
         void draw(const Point &start, 
         const Point & end, 
-        const PixelColor& put);            // changes the colors of the ImgBuff
+        const PixelColor& put);            // changes the colors of the CameraBuff
         void record();                     // the ostream record
 
-    ~ImgBuff() {
+    ~CameraBuff() {
         for (int i = 0; i < imageX; i++) {
         delete[] str[i];
         }
@@ -53,15 +53,15 @@ public:
     };
 };
 
-//! VS Code with G++ & linux get angry when I place the code bellow in ImgBuff.cpp where should stands :(
+//! VS Code with G++ & linux get angry when I place the code bellow in CameraBuff.cpp where should stands :(
     
-void ImgBuff::draw(const Point &start, const Point & end, const PixelColor& put){ // colors all the pixels between std::string start(x,y) and std::string end(x,y)
+void CameraBuff::draw(const Point &start, const Point & end, const PixelColor& put){ // colors all the pixels between std::string start(x,y) and std::string end(x,y)
             for (int y = start.getY(); y < end.getY(); y++) 
                 for (int x = start.getX(); x < end.getX(); x++) 
                     str[x][y] = put;
 }
 
-void ImgBuff::record(){ // transfers the ImgBuff to the ostream
+void CameraBuff::record(){ // transfers the CameraBuff to the ostream
     std::ofstream ppmFS(this->fileName, std::ios::out | std::ios::binary);
 
     ppmFS << "P3\n" << imageX << " " << imageY << "\n" << 255 << "\n";
@@ -75,7 +75,7 @@ void ImgBuff::record(){ // transfers the ImgBuff to the ostream
     ppmFS.close();
 }
 
-void ImgBuff::print(){
+void CameraBuff::print(){
     for (int y = 0; y < imageY; y++){ 
         for (int x = 0; x < imageX; x++) {
             std::cout << str[x][y];

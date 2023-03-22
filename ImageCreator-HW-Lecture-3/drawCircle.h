@@ -1,13 +1,13 @@
 #ifndef DRAW_CIRCLE_H
 #define DRAW_CIRCLE_H
 
-#include "imgBuff.h"
+#include "CameraBuff.h"
 #include "randoms.h"
 #include "point.h"
 
 #include <cmath>
 
-void drawCircle(ImgBuff &m , int &radius){
+void drawCircle(CameraBuff &m , int &radius){
 
     radius -=1;
     PixelColor color = getRandNum();

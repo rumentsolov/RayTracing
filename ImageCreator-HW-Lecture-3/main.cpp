@@ -1,4 +1,4 @@
-#include "imgBuff.h"
+#include "CameraBuff.h"
 #include "drawSquares.h"
 #include "drawCircle.h"
 #include "clock.h"
@@ -14,7 +14,7 @@ int main() {
     // The size of the image by Y axis
     int imageY = 1080;
 
-    ImgBuff buff(imageX, imageY);
+    CameraBuff buff(imageX, imageY);
 
     // The number of squares that user want to be drawn by X and Y axes
     // The algorithm is good enough so every pixel can be colored randomly => imageY*imageX; 

@@ -3,14 +3,14 @@
 
 #include <cmath>
 
-#include "imgBuff.h"
+#include "CameraBuff.h"
 #include "randoms.h"
 #include "point.h"
 
 //! Splits the m into squares/areas
 //! Every square is filled with colors by m.draw() function
 
-void drawSquares( ImgBuff &m , int &squaresX , int &squaresY ){
+void drawSquares( CameraBuff &m , int &squaresX , int &squaresY ){
 
     Point start(0,0);                              //! Starts from the left top corner
 
