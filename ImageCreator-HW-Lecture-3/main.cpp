@@ -1,6 +1,5 @@
 #include "CameraBuff.h"
-#include "drawSquares.h"
-#include "drawCircle.h"
+#include "CameraColor.h"
 #include "clock.h"
 
 int main() {
@@ -9,25 +8,17 @@ int main() {
     //! All user inputs are in image PIXELS
 
     // The size of the image by X axis
-    int imageX = 1920; 
+    int imageX = 600; 
 
     // The size of the image by Y axis
-    int imageY = 1080;
+    int imageY = 300;
 
     CameraBuff buff(imageX, imageY);
-
-    // The number of squares that user want to be drawn by X and Y axes
-    // The algorithm is good enough so every pixel can be colored randomly => imageY*imageX; 
-    // ! ((imageX % squaresX == 0 ) && (imageY % squaresY == 0)) => if this is false, the biggest possible size will be used and the rest of the image will be black
-    int squaresX = imageX/30; 
-    int squaresY = imageY/30;
 
     // The radius of the circle that user wants to be drawn
     int radius = 300 ; 
 
-    drawSquares(buff, squaresX , squaresY ); // Fills the image buffer fields with random colors by squares
-
-    drawCircle(buff , radius ); // Draws the circle with color in the center of the image
+    CameraColor(buff, imageX , imageY ); // Fills the image buffer fields with random colors by squares
 
     buff.record(); // Records the image buffer to a ppm file
 
