@@ -37,6 +37,13 @@ public:
         t * some.third );
     }
 
+    PixelColor operator/(const PixelColor&some,int t){
+    return PixelColor(
+        some.first/t,
+        some.second/t,
+        some.third/t );
+    }
+
     PixelColor operator+(const PixelColor&first, const PixelColor&second){
     return PixelColor(
         first.first + second.first,

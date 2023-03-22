@@ -2,7 +2,9 @@
 #define IMG_BUFF_H
 
 #include "pixelColor.h"
+#include "rendering.h"
 #include "vec.h"
+#include "coordinates.h"
 
 #include <iostream>
 
@@ -14,10 +16,6 @@ class CameraBuff :public PixelColor {
 public:
     int imageX;                                 // the size of the image by X axis
     int imageY;                                 // the size of the image by Y axis
-    int squaresX;                               // the number of squares that user want to be drawn in X axis
-    int squaresY;                               // the number of squares that user want to be drawn in Y axis
-    int radius;                                 // the radius of the circle that user wants to be drawn
-    PixelColor colorBlack;
     
     std::string fileName = "the_image.ppm";//the image name
 
@@ -26,7 +24,6 @@ public:
 
     CameraBuff(int imageX_, int imageY_) : imageX(imageX_), imageY(imageY_)
     {
-        PixelColor colorBlack(0,0,0);
         str = new PixelColor*[imageX]; // Allocates memory for columns
 
         for (int x = 0; x < imageX; x++)
@@ -35,7 +32,7 @@ public:
         // Fills the CameraBuff with black color
         for (int y = 0; y < imageY; y++){  
             for (int x = 0; x < imageX; x++) {
-            str[x][y] = colorBlack;
+            str[x][y] = RenderPixel(x,y);
             }
         }
     }
