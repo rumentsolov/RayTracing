@@ -4,13 +4,14 @@
 #include <cmath>
 
 #include "CameraBuff.h"
-#include "randoms.h"
-#include "point.h"
+
+
+// #include "randoms.h" // in case I neeed rndm colors
 
 //! Splits the m into squares/areas
 //! Every square is filled with colors by m.draw() function
 
-void CameraColor( CameraBuff &m , int &squaresX , int &squaresY ){
+void Rendering( CameraBuff &m , int &squaresX , int &squaresY ){
 
 
     Point start(0,0,0);                              //! Starts from the left top corner // Z is always == 0 due to camera is 2D

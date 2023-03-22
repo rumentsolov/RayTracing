@@ -1,5 +1,5 @@
 #include "CameraBuff.h"
-#include "CameraColor.h"
+#include "rendering.h"
 #include "clock.h"
 
 int main() {
@@ -18,7 +18,7 @@ int main() {
     // The radius of the circle that user wants to be drawn
     int radius = 300 ; 
 
-    CameraColor(buff, imageX , imageY ); // Fills the image buffer fields with random colors by squares
+    Rendering(buff, imageX , imageY ); // Fills the image buffer fields with random colors by squares
 
     buff.record(); // Records the image buffer to a ppm file
 
