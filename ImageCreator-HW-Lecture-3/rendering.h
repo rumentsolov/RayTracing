@@ -12,10 +12,12 @@ PixelColor RenderPixel( int &X , int &Y ){
 float v = float(Y) / getImageX();
 float u = float(X) / getImageY();
 
+//std::cout << getLeftCornetr();
 //Vec vec = lower_left_corner + u*horizontal + v*vertical - origin;
 Vec vec =  getLeftCornetr() + u*getHorizontal() + v*getVertical() - getOrigin();
+
 Ray ray(getOrigin(),vec);
-PixelColor color = generatedColor(ray,startingColor) ;
+PixelColor color = getPixelColor(ray,startingColor) ;
 //std::cout << color << " ";
 //m.draw(start,end ,color);
     return color;

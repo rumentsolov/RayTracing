@@ -18,7 +18,7 @@ int getImageY() {
 }
 
 PixelColor startingColor( 0 , 65 , 255);
-float focal_length = 300.0;
+float focal_length = 200.0;
 
 Vec getOrigin() { 
     Vec origin(0,0,0);
