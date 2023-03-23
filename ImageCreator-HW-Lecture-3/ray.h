@@ -19,6 +19,22 @@ class Ray {
         Vec at(float t) const {
             return orig + t*dir;
         }
+
+        float getX(){
+        return dir.getX() - orig.getX();
+        }
+
+        float getY(){
+        return dir.getY() - orig.getY();
+        }
+
+        float getZ(){
+        return dir.getZ() - orig.getZ();
+        }
+
+        
 };
+
+
 
 #endif //! RAY_H

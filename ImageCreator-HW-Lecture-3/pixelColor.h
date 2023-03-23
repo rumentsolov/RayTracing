@@ -55,7 +55,7 @@ public:
     
     PixelColor addX(const PixelColor&some,int t){
     return PixelColor(
-    some.first* t,
+    some.first+ t,
     some.second ,
     some.third);
     }
@@ -63,7 +63,7 @@ public:
     PixelColor addY(const PixelColor&some,int t){
     return PixelColor(
     some.first,
-    some.second * t,
+    some.second + t,
     some.third);
     }
 
@@ -71,7 +71,7 @@ public:
     return PixelColor(
     some.first,
     some.second,
-    some.third* t);
+    some.third+ t);
     }
     
 #endif //! PIXELCOLOR_H

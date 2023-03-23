@@ -7,17 +7,15 @@
 #include "ray.h"
 
 
-PixelColor getPixelColor(const Ray& r, PixelColor colorP) {
-    Vec unit_direction = unit_vector(r.direction());
-    
-    int x = abs(r.direction().getX());
-    int y = abs(r.direction().getY());
-    
-    if(x > 255) x = 255;
-    if(y > 255) y = 255;
-    //std::cout << x << " " <<x<< std::endl;
+PixelColor getPixelColor(Ray r, PixelColor colorP) {
 
-    PixelColor retunCol = addZ(colorP,y) + addY(colorP,y);
+    float x = r.getX();
+    float y = r.getY();
+    float z = r.getZ();
+
+    //PixelColor retunCol = addY(colorP,y);
+
+    PixelColor retunCol = addX(colorP,x) + addY(colorP,y) + addZ(colorP,z);
 
     return retunCol;
     // abs((int)(r.direction().getX()))*
