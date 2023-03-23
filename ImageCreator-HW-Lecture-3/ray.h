@@ -21,15 +21,15 @@ class Ray {
         }
 
         float getX(){
-        return dir.getX() - orig.getX();
+        return abs(dir.getX() - orig.getX());
         }
 
         float getY(){
-        return dir.getY() - orig.getY();
+        return abs(dir.getY()- orig.getY());
         }
 
         float getZ(){
-        return dir.getZ() - orig.getZ();
+        return dir.getZ()- orig.getZ();
         }
 
         

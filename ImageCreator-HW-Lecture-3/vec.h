@@ -91,12 +91,5 @@ Vec operator/(Vec&someVec,float t){
         someVec.getZ() * (1/t) );
 }
 
-Vec unit_vector(Vec vec) {
-    return vec / vec.length();
-}
-
-std::ostream& operator<<(std::ostream& os, const Vec& someVec){
-    return os << someVec.getX() << " " << someVec.getY() << " " << someVec.getZ() << std::endl;
-}
 
 #endif //!VEC_H

@@ -17,11 +17,12 @@ int getImageY() {
     return imageY;
 }
 
-PixelColor startingColor( 0 , 210 , 255);
-float focal_length = 200.0;
+PixelColor startingColor( 0 , 0 , 0);
+
+float focal_length = getImageX()/2;
 
 Vec getOrigin() { 
-    Vec origin(0,getImageY(),0);
+    Vec origin(0,getImageY()/2,0);
     return origin;
     }
 

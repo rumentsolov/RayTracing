@@ -9,17 +9,9 @@
 
 PixelColor RenderPixel( int &X , int &Y ){ 
 
-/*
-float v = float(Y) / getImageX();
-float u = float(X) / getImageY();
+//std::cout << X << " " << Y << " " << -focal_length << std::endl;
 
-
-//Vec vec = lower_left_corner + u*horizontal + v*vertical - origin;
-Vec vec =  getLeftCornetr() + u*getHorizontal() + v*getVertical() - getOrigin();
-
-*/
-
-Vec vec(X, Y, -focal_length);
+Vec vec(X, Y, 0);
 
 Ray ray(getOrigin(),vec);
 

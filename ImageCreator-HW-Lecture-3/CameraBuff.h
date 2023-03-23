@@ -36,10 +36,6 @@ public:
             }
         }
     }
-        void print();                      // only for easier debugging
-        void draw(const Vec &start, 
-        const Vec & end, 
-        const PixelColor& put);            // changes the colors of the CameraBuff
         void record();                     // the ostream record
 
     ~CameraBuff() {
@@ -52,12 +48,6 @@ public:
 
 //! VS Code with G++ & linux get angry when I place the code bellow in CameraBuff.cpp where should stands :(
     
-void CameraBuff::draw(const Vec &start, const Vec & end, const PixelColor& put){ // colors all the pixels between std::string start(x,y) and std::string end(x,y)
-            for (int y = start.getY(); y < end.getY(); y++) 
-                for (int x = start.getX(); x < end.getX(); x++) 
-                    str[x][y] = put;
-}
-
 void CameraBuff::record(){ // transfers the CameraBuff to the ostream
     std::ofstream ppmFS(this->fileName, std::ios::out | std::ios::binary);
 
@@ -70,15 +60,6 @@ void CameraBuff::record(){ // transfers the CameraBuff to the ostream
     ppmFS << "\n";
     }
     ppmFS.close();
-}
-
-void CameraBuff::print(){
-    for (int y = 0; y < imageY; y++){ 
-        for (int x = 0; x < imageX; x++) {
-            std::cout << str[x][y];
-        }
-    std::cout << std::endl;
-    }
 }
 
 #endif //! IMG_BUFF_H

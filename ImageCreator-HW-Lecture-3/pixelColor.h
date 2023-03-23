@@ -5,11 +5,11 @@
 
 class PixelColor {
 public:
-    unsigned char first;
-    unsigned char second;
-    unsigned char third;
+    float first;
+    float  second;
+    float  third;
     PixelColor():first(0), second(0), third(0) {}
-    PixelColor(unsigned char first_ ,unsigned char second_ , unsigned char third_) : first(first_), second(second_), third(third_) {}
+    PixelColor(float  first_ ,float  second_ , float  third_) : first(first_), second(second_), third(third_) {}
     ~PixelColor() {}
 
     void operator=(const PixelColor& other){
@@ -18,32 +18,10 @@ public:
             this->third = other.third;
         }
 
-    PixelColor & operator*(unsigned char t){
-            first *= t;
-            second *= t;
-            third *= t;
-    return *this;
-    }
-
-
 };
 
     std::ostream & operator<<(std::ostream &ppmFS , PixelColor &x){
-       return ppmFS << (int)x.first <<" "<< (int)x.second<<" " << (int)x.third;
-    }
-
-    PixelColor operator*(unsigned char t, const PixelColor&some){
-    return PixelColor(
-        t * some.first,
-        t * some.second,
-        t * some.third );
-    }
-
-    PixelColor operator/(const PixelColor&some,int t){
-    return PixelColor(
-        some.first/t,
-        some.second/t,
-        some.third/t );
+       return ppmFS << abs((int)x.first) <<" "<< abs((int)x.second)<<" " << abs((int)x.third);
     }
 
     PixelColor operator+(const PixelColor&first, const PixelColor&second){
@@ -53,21 +31,21 @@ public:
         first.third + second.third );
     }
     
-    PixelColor addX(const PixelColor&some,int t){
+    PixelColor addX(const PixelColor&some,float  t){
     return PixelColor(
-    some.first+ t,
+    some.first - t,
     some.second ,
     some.third);
     }
 
-    PixelColor addY(const PixelColor&some,int t){
+    PixelColor addY(const PixelColor&some,float  t){
     return PixelColor(
     some.first,
-    some.second + t,
+    some.second - t,
     some.third);
     }
 
-    PixelColor addZ(const PixelColor&some,int t){
+    PixelColor addZ(const PixelColor&some,float  t){
     return PixelColor(
     some.first,
     some.second,
