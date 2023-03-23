@@ -7,17 +7,17 @@
 
 int getImageX() {
     // The size of the image by X axis
-    const int imageX = 1600; 
+    const int imageX = 200; 
     return imageX;
 }
 
 int getImageY() {
     // The size of the image by X axis
-    const int imageY = 800; 
+    const int imageY = 100; 
     return imageY;
 }
 
-PixelColor startingColor( 0 , 65 , 255);
+PixelColor startingColor( 0 , 20 , 255);
 float focal_length = 200.0;
 
 Vec getOrigin() { 

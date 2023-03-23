@@ -24,6 +24,8 @@ public:
             third *= t;
     return *this;
     }
+
+
 };
 
     std::ostream & operator<<(std::ostream &ppmFS , PixelColor &x){
@@ -51,5 +53,25 @@ public:
         first.third + second.third );
     }
     
+    PixelColor addX(const PixelColor&some,int t){
+    return PixelColor(
+    some.first* t,
+    some.second ,
+    some.third);
+    }
+
+    PixelColor addY(const PixelColor&some,int t){
+    return PixelColor(
+    some.first,
+    some.second * t,
+    some.third);
+    }
+
+    PixelColor addZ(const PixelColor&some,int t){
+    return PixelColor(
+    some.first,
+    some.second,
+    some.third* t);
+    }
     
 #endif //! PIXELCOLOR_H

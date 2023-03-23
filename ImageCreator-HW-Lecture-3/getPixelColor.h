@@ -12,10 +12,14 @@ PixelColor getPixelColor(const Ray& r, PixelColor colorP) {
     
     int x = abs(r.direction().getX());
     int y = abs(r.direction().getY());
+    
     if(x > 255) x = 255;
     if(y > 255) y = 255;
     //std::cout << x << " " <<x<< std::endl;
-    return colorP*y*x;
+
+    PixelColor retunCol = addZ(colorP,y) + addY(colorP,y);
+
+    return retunCol;
     // abs((int)(r.direction().getX()))*
     // abs((int)(r.direction().getY()))
 }

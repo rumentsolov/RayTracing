@@ -78,7 +78,7 @@ Vec operator*(const Vec&first, const Vec&second){
 }
 
 Vec operator*(float t,const Vec&someVec){
-     return Vec(
+    return Vec(
         someVec.getX() * t,
         someVec.getY() * t,
         someVec.getZ() * t );
