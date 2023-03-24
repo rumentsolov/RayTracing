@@ -23,11 +23,11 @@ public:
     {
 
     Vec origin(0,0,0);
-    Vec focalVec(0,0,-300);
+    Vec focalVec(0,0,-100);
     Vec topLeftImageCornerVec(origin.getX() - imageX/2,origin.getY() +imageY/2,focalVec.getZ()); 
     //! Colors should change between 0 and 255 so we need that coefficient to split the color step true all the pixels
     colorCoefficient = 254.99999/(topLeftImageCornerVec.length() - focalVec.length());
-    std::cout << colorCoefficient << std::endl; //! focalVec is the smalles vector always
+    std::cout << "Color coefficient :" << colorCoefficient << std::endl; //! focalVec is the smalles vector always
 
     float originX = focalVec.getX();
     float originY = focalVec.getY();

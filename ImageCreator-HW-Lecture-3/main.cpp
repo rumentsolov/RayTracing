@@ -35,7 +35,7 @@ Store the ray with the calculated direction and originx
 int main() {
 
 
-    CameraBuff buff(1200,900 );
+    CameraBuff buff(600,600 );
     buff.record();
 
 	return 0;
