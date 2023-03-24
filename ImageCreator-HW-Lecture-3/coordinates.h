@@ -17,7 +17,7 @@ int getImageY() {
     return imageY;
 }
 
-PixelColor startingColor( 0 , 0 , 0);
+PixelColor startingColor( 255 , 0 , 0);
 
 float focal_length = getImageX()/2;
 

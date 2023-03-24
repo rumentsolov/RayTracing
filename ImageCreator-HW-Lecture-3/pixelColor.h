@@ -30,7 +30,14 @@ public:
         first.second + second.second,
         first.third + second.third );
     }
-    
+
+     PixelColor operator-(const PixelColor&first, const PixelColor&second){
+    return PixelColor(
+        first.first - second.first,
+        first.second - second.second,
+        first.third - second.third );
+    }
+
     PixelColor addX(const PixelColor&some,float  t){
     return PixelColor(
     some.first - t,
@@ -49,7 +56,7 @@ public:
     return PixelColor(
     some.first,
     some.second,
-    some.third+ t);
+    some.third - t);
     }
     
 #endif //! PIXELCOLOR_H

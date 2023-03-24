@@ -16,20 +16,16 @@ class Ray {
         Vec origin() const  { return orig; }
         Vec direction() const { return dir; }
 
-        Vec at(float t) const {
-            return orig + t*dir;
-        }
-
         float getX(){
-        return abs(dir.getX() - orig.getX());
+        return abs(dir.getX());
         }
 
         float getY(){
-        return abs(dir.getY()- orig.getY());
+        return abs(dir.getY() );
         }
 
         float getZ(){
-        return dir.getZ()- orig.getZ();
+        return abs(dir.getZ() );
         }
 
         
