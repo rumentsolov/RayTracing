@@ -53,7 +53,15 @@ class Vec {
 
         Vec& operator/=(const float t) {
         return *this * (1/t);
-}
+        }
+
+        Vec& operator = (Vec second) {
+        setX(second.getX()),
+        setY(second.getY()),
+        setZ(second.getZ());
+        return *this;
+        }
+
 };
 
 Vec operator+(const Vec&first, const Vec&second){
@@ -90,6 +98,7 @@ Vec operator/(Vec&someVec,float t){
         someVec.getY() * (1/t),
         someVec.getZ() * (1/t) );
 }
+
 
 
 #endif //!VEC_H

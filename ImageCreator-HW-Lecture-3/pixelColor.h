@@ -6,8 +6,8 @@
 class PixelColor {
 public:
     float first;
-    float  second;
-    float  third;
+    float second;
+    float third;
     PixelColor():first(0), second(0), third(0) {}
     PixelColor(float  first_ ,float  second_ , float  third_) : first(first_), second(second_), third(third_) {}
     ~PixelColor() {}
@@ -17,46 +17,39 @@ public:
             this->second = other.second;
             this->third = other.third;
         }
-
 };
 
     std::ostream & operator<<(std::ostream &ppmFS , PixelColor &x){
-       return ppmFS << abs((int)x.first) <<" "<< abs((int)x.second)<<" " << abs((int)x.third);
+       return ppmFS << (int)(abs(x.first)) <<" "<< (int)(abs(x.second))<<" " << (int)(abs(x.third));
     }
 
     PixelColor operator+(const PixelColor&first, const PixelColor&second){
-    return PixelColor(
-        first.first + second.first,
-        first.second + second.second,
-        first.third + second.third );
-    }
-
-     PixelColor operator-(const PixelColor&first, const PixelColor&second){
     return PixelColor(
         first.first - second.first,
         first.second - second.second,
         first.third - second.third );
     }
 
-    PixelColor addX(const PixelColor&some,float  t){
+
+    PixelColor X(const PixelColor&some,int x){
     return PixelColor(
-    some.first - t,
+    some.first + x,
     some.second ,
     some.third);
     }
 
-    PixelColor addY(const PixelColor&some,float  t){
+    PixelColor Y(const PixelColor&some,int y){
     return PixelColor(
     some.first,
-    some.second - t,
+    some.second + y,
     some.third);
     }
 
-    PixelColor addZ(const PixelColor&some,float  t){
+    PixelColor Z(const PixelColor&some,int z){
     return PixelColor(
     some.first,
     some.second,
-    some.third - t);
+    some.third + z);
     }
     
 #endif //! PIXELCOLOR_H

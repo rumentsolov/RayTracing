@@ -15,22 +15,18 @@ class Ray {
 
         Vec origin() const  { return orig; }
         Vec direction() const { return dir; }
-
-        float getX(){
-        return abs(dir.getX());
-        }
-
-        float getY(){
-        return abs(dir.getY() );
-        }
-
-        float getZ(){
-        return abs(dir.getZ() );
-        }
-
-        
 };
 
+        int getX(const Ray &r){
+        return r.dir.getX();
+        }
 
+        int getY(const Ray &r){
+        return r.dir.getY();
+        }
 
+        int getZ(const Ray &r){
+        return r.dir.getZ();
+        }
+        
 #endif //! RAY_H
