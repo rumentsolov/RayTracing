@@ -64,8 +64,8 @@ class Vec {
 
 };
 
-Vec operator+(const Vec&first, const Vec&second){
-    return Vec(
+    Vec operator+(const Vec&first, const Vec&second){
+        return Vec(
         first.getX() + second.getX(),
         first.getY() + second.getY(),
         first.getZ() + second.getZ() );

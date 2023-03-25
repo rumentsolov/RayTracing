@@ -1,0 +1,3 @@
+argument types are: (int, Vec, int, Vec, int, Vec, int)
+
+no matching function for call to ‘ObjectBuff::ObjectBuff(int&, Vec, int, Vec, int, Vec, int)’

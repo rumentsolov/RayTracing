@@ -25,13 +25,20 @@ C = (-1.56, 0.15, -1.92)
 
 */
 
-#include "CameraBuff.h"
+#include "cameraBuff.h"
+#include "surfaceBuff.h"
+#include "vec.h"
+#include "object.h"
 
 int main() {
 
 
     CameraBuff buff(600,600 );
-    buff.record();
+    //buff.record();
+
+    Object point(Vec( 0, 0, 0 ) ,  PixelColor( 255,255,255));
+
+    SurfaceBuff triangle(3, point , point , point); // here will be the 
 
 	return 0;
 }
