@@ -19,7 +19,7 @@ public:
     std::string fileName = "the_image.ppm";//the image name
     PixelColor** str;
 
-    CameraBuff(int imageX_, int imageY_) : imageX(imageX_), imageY(imageY_)
+    CameraBuff(int imageX_, int imageY_) : imageX(imageX_), imageY(imageY_) , str( new PixelColor*[imageX])
     {
 
     Vec origin(0,0,0);
@@ -33,10 +33,7 @@ public:
     float originY = focalVec.getY();
     float originZ = focalVec.getZ();
 
-        str = new PixelColor*[imageX]; // Allocates memory for columns
-
-        for (int x = 0; x < imageX; x++)
-            str[x] = new PixelColor[imageY]; //  Allocates memory for rows
+        for (int x = 0; x < imageX; x++) str[x] = new PixelColor[imageY]; //  Allocates memory for rows
         
 
         // Fills the CameraBuff with color according the vec length
