@@ -57,6 +57,8 @@ public:
 
             Vec N = A.cross(B); // the resultant vector
 
+            std::cout << std::endl<< N.length() << std::endl;
+
             //! Calculating the Objects inside the triangle
 
 
