@@ -2,7 +2,7 @@
 #define RAY_H
 
 #include "vec.h"
-
+#include <iostream>
 class Ray {
     public:
         Vec orig;
@@ -18,15 +18,23 @@ class Ray {
 };
 
         int getX(const Ray &r){
-        return r.dir.getX();
+        return r.dir.X();
         }
 
         int getY(const Ray &r){
-        return r.dir.getY();
+        return r.dir.Y();
         }
 
         int getZ(const Ray &r){
-        return r.dir.getZ();
+        return r.dir.Z();
+        }
+
+        float getLength(const Ray &r){
+            float x = r.dir.X() - r.orig.X();
+            float y = r.dir.Y() - r.orig.Y();
+            float z = r.dir.Z() - r.orig.Z();
+            std::cout << "X:" << x << " Y:" << y << " Z:" << z << std::endl;
+            return sqrt(x * x + y * y + z * z); 
         }
         
 #endif //! RAY_H

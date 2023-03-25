@@ -13,9 +13,9 @@ class Vec {
     Vec(): x(0.0), y(0.0) , z(0.0){}; 
     Vec( float x_, float y_ , float z_ ): x(x_), y(y_), z(z_) {};
 
-    float const getX() const{ return x;}
-    float const getY() const { return y;}
-    float const getZ() const { return z;}
+    float const X() const{ return x;}
+    float const Y() const { return y;}
+    float const Z() const { return z;}
 
     void setX(float x_) { this->x = x_;}
     void setY(float y_) { this->y = y_;}
@@ -25,28 +25,28 @@ class Vec {
     void addY(float y_) { this->y += y_;}
     void addZ(float z_) { this->z += z_;}
 
-    float sqrtX() { return x*x;}
-    float sqrtY() { return y*y;}
-    float sqrtZ() { return z*z;}
+    float powX() { return x*x;}
+    float powY() { return y*y;}
+    float powZ() { return z*z;}
 
 
         float length() {
-            return sqrt(sqrtX() + sqrtY() + sqrtZ());
+            return sqrt(powX() + powY() + powZ());
         }
     
-        Vec operator-() const { return Vec(-getX(), -getY(), -getZ()); }
+        Vec operator-() const { return Vec(-X(), -Y(), -Z()); }
         
         Vec& operator+=(const Vec &other) {
-            setX(other.getX()) ;
-            setY(other.getY()) ;
-            setZ(other.getZ()) ;
+            setX(other.X()) ;
+            setY(other.Y()) ;
+            setZ(other.Z()) ;
             return *this;
         }
 
-        Vec& operator*(float t){
-        setX(getX()*t) ;
-        setY(getY()*t) ;
-        setZ(getZ()*t) ;
+        Vec& operator*(float scalar){
+        setX(X()*scalar) ;
+        setY(Y()*scalar) ;
+        setZ(Z()*scalar) ;
         return *this;
         }
 
@@ -55,48 +55,51 @@ class Vec {
         return *this * (1/t);
         }
 
-        Vec& operator = (Vec second) {
-        setX(second.getX()),
-        setY(second.getY()),
-        setZ(second.getZ());
+        Vec& operator = (Vec B) {
+        setX(B.X()),
+        setY(B.Y()),
+        setZ(B.Z());
         return *this;
         }
 
+        Vec cross(const Vec& B) const {
+            return Vec{
+                Y() * B.Z() - Z() *B.Y() ,
+                Z() * B.X() + X() *B.Z() ,
+                X() * B.Y() + Y() *B.X()
+            };
+        }
 };
 
-    Vec operator+(const Vec&first, const Vec&second){
+Vec operator+(const Vec&A, const Vec&B){
         return Vec(
-        first.getX() + second.getX(),
-        first.getY() + second.getY(),
-        first.getZ() + second.getZ() );
+        A.X() + B.X(),
+        A.Y() + B.Y(),
+        A.Z() + B.Z() );
 }
 
-Vec operator-(const Vec&first, const Vec&second){
+Vec operator-(const Vec&A, const Vec&B){
     return Vec(
-        first.getX() - second.getX(),
-        first.getY() - second.getY(),
-        first.getZ() - second.getZ() );
+        A.X() - B.X(),
+        A.Y() - B.Y(),
+        A.Z() - B.Z() );
 }
 
-Vec operator*(const Vec&first, const Vec&second){
+Vec operator*(const Vec&A, const Vec&B){
     return Vec(
-        first.getX() * second.getX(),
-        first.getY() * second.getY(),
-        first.getZ() * second.getZ() );
+
+        A.X() * B.X(),
+        A.Y() * B.Y(),
+        A.Z() * B.Z() 
+
+        );
 }
 
-Vec operator*(float t,const Vec&someVec){
+Vec operator/(Vec&A,float t){
     return Vec(
-        someVec.getX() * t,
-        someVec.getY() * t,
-        someVec.getZ() * t );
-}
-
-Vec operator/(Vec&someVec,float t){
-    return Vec(
-        someVec.getX() * (1/t),
-        someVec.getY() * (1/t),
-        someVec.getZ() * (1/t) );
+        A.X() * (1/t),
+        A.Y() * (1/t),
+        A.Z() * (1/t) );
 }
 
 

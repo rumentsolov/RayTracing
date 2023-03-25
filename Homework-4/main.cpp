@@ -26,7 +26,7 @@ C = (-1.56, 0.15, -1.92)
 */
 
 #include "cameraBuff.h"
-#include "surfaceBuff.h"
+#include "triangleBuff.h"
 #include "vec.h"
 #include "object.h"
 
@@ -36,9 +36,12 @@ int main() {
     CameraBuff buff(600,600 );
     //buff.record();
 
-    Object point(Vec( 0, 0, 0 ) ,  PixelColor( 255,255,255));
-
-    SurfaceBuff triangle(3, point , point , point); // here will be the 
+    SurfaceBuff triangle( 
+        Vec( 0, 175, -30 ) , 
+        Vec( -175, -175, -30 ) , 
+        Vec( 175, -175, -30 ) , 
+        
+        PixelColor( 255,255,255)); // here will be the rays holder
 
 	return 0;
 }

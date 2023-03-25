@@ -24,14 +24,14 @@ public:
 
     Vec origin(0,0,0);
     Vec focalVec(0,0,-100);
-    Vec topLeftImageCornerVec(origin.getX() - imageX/2,origin.getY() +imageY/2,focalVec.getZ()); 
+    Vec topLeftImageCornerVec(origin.X() - imageX/2,origin.Y() +imageY/2,focalVec.Z()); 
     //! Colors should change between 0 and 255 so we need that coefficient to split the color step true all the pixels
     colorCoefficient = 254.99999/(topLeftImageCornerVec.length() - focalVec.length());
     std::cout << "Color coefficient :" << colorCoefficient << std::endl; //! focalVec is the smalles vector always
 
-    float originX = focalVec.getX();
-    float originY = focalVec.getY();
-    float originZ = focalVec.getZ();
+    float originX = focalVec.X();
+    float originY = focalVec.Y();
+    float originZ = focalVec.Z();
 
         for (int x = 0; x < imageX; x++) str[x] = new PixelColor[imageY]; //  Allocates memory for rows
         
@@ -40,12 +40,12 @@ public:
         for (int y = 0; y < imageY; y++){  
             for (int x = 0; x < imageX; x++) {
 
-            Vec vec(topLeftImageCornerVec.getX() + x, topLeftImageCornerVec.getY() - y, topLeftImageCornerVec.getZ()); // - y due to image y is backwards
+            Vec vec(topLeftImageCornerVec.X() + x, topLeftImageCornerVec.Y() - y, topLeftImageCornerVec.Z()); // - y due to image y is backwards
 
             PixelColor color(
-                (originX - abs(vec.getX()))*colorCoefficient , 
-                (originY - abs(vec.getY()))*colorCoefficient , 
-                abs(vec.getZ())); 
+                (originX - abs(vec.X()))*colorCoefficient , 
+                (originY - abs(vec.Y()))*colorCoefficient , 
+                abs(vec.Z())); 
             str[x][y] = color;
             }
         }
