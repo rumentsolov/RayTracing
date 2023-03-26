@@ -3,61 +3,66 @@
 
 #include <cmath>
 
-constexpr float kEpsilon = 1e-8;
+
 
 class Vec {
-
+public:
     float x;
     float y;
     float z;
 
-    public:
+    
     Vec(): x(0.0), y(0.0) , z(0.0){}; 
     Vec( float XX): x(XX), y(XX) , z(XX){}; 
     Vec( float x_, float y_ , float z_ ): x(x_), y(y_), z(z_) {};
 
-    float const X() const{ return x;}
-    float const Y() const { return y;}
-    float const Z() const { return z;}
+        Vec operator + (const Vec &v) const
+        { return Vec(x + v.x, y + v.y, z + v.z); }
 
-    void setX(float x_) { this->x = x_;}
-    void setY(float y_) { this->y = y_;}
-    void setZ(float y_) { this->y = y_;}
+        Vec operator - (const Vec &v) const
+        { return Vec(x - v.x, y - v.y, z - v.z); }
 
-    void addX(float x_) { this->x += x_;}
-    void addY(float y_) { this->y += y_;}
-    void addZ(float z_) { this->z += z_;}
+        Vec operator - () const
+        { return Vec(-x, -y, -z); }
+
+        Vec operator * (const float &r) const
+        { return Vec(x * r, y * r, z * r); }
+
+        Vec operator * (const Vec &v) const
+        { return Vec(x * v.x, y * v.y, z * v.z); }
+
+        //const int& operator [] (uint8_t i) const { return (&x)[i]; }
+
+        //int& operator [] (uint8_t i) { return (&x)[i]; }
+
+        Vec& operator /= (const float &r)
+        { x /= r, y /= r, z /= r; return *this; }
+
+        Vec& operator *= (const float &r)
+        { x *= r, y *= r, z *= r; return *this; }
 
 
-        Vec operator-() const { return Vec(-X(), -Y(), -Z()); }
-        
+
         Vec& operator+=(const Vec &other) {
-            setX(other.X()) ;
-            setY(other.Y()) ;
-            setZ(other.Z()) ;
+            this->x += other.x ;
+            this->y += other.y ;
+            this->y += other.z ;
             return *this;
         }
 
-        Vec& operator = (const Vec &B) {
-        setX(B.X()),
-        setY(B.Y()),
-        setZ(B.Z());
+        Vec& operator = (const Vec &other) {
+        this->x = other.x ;
+        this->y = other.y ;
+        this->y = other.z ;
         return *this;
         }
+
+
+
 
         Vec cross(const Vec& B) const ;
 
         float dotProduct(const Vec& B) const;
-
-        bool rayIntersectsTriangle(
-        const Vec &orig, 
-        const Vec &vec,
-        const Vec &A,
-        const Vec &B,
-        const Vec &C,
-        float &t, 
-        float &u, 
-        float &v);
 
         float norm() const
         { return x * x + y * y + z * z; }
@@ -79,66 +84,130 @@ class Vec {
     
 };
 
-Vec operator+(const Vec&A, const Vec&B){
-        return Vec(
-        A.X() + B.X(),
-        A.Y() + B.Y(),
-        A.Z() + B.Z() );
-}
-
-Vec operator-(const Vec&A, const Vec&B){
-    return Vec(
-        A.X() - B.X(),
-        A.Y() - B.Y(),
-        A.Z() - B.Z() );
-}
-
 Vec operator*(const Vec&A, const Vec&B){
     return Vec(
-        A.X() * B.X(),
-        A.Y() * B.Y(),
-        A.Z() * B.Z() 
+        A.x * B.x,
+        A.y * B.y,
+        A.z * B.z 
         );
 }
 
 Vec operator*(const Vec&A, float scalar){
     return Vec(
-        A.X() * scalar,
-        A.Y() * scalar,
-        A.Z() * scalar 
+        A.x * scalar,
+        A.y * scalar,
+        A.z * scalar 
         );
 }
 
 Vec operator/(Vec&A,float t){
     return Vec(
-        A.X() * (1/t),
-        A.Y() * (1/t),
-        A.Z() * (1/t) );
+        A.x * (1/t),
+        A.y * (1/t),
+        A.z * (1/t) );
 }
 
 
 Vec Vec::cross(const Vec& B) const {
             return Vec{
-                Y() * B.Z() - Z() *B.Y() ,
-                Z() * B.X() - X() *B.Z() ,
-                X() * B.Y() - Y() *B.X()
+                y * B.z - z *B.y ,
+                z * B.x - x *B.z ,
+                x * B.y - y *B.x
             };
         }
 
 float Vec::dotProduct(const Vec& B) const {
-    return (X() * B.X() + Y() * B.Y() + Z() * B.Z());
+    return (x * B.x + y * B.y + z * B.z);
 }
 
 bool rayTriangleIntersect(
-    const Vec &orig, const Vec &dir,
-    const Vec &v0, const Vec &v1, const Vec &v2,
-    float &t, float &u, float &v)
-{
+    const Vec &orig, 
+    const Vec &vec,
+    const Vec &A,
+    const Vec &B, 
+    const Vec &C
+    //float &t, 
+    //float &u, 
+    //float &v
+    )
+    {
+        
+        constexpr float kEpsilon = 1e-8;
+        float t = 0, u =0, v = 0;
 
+        Vec AB = B - A;
+        Vec AC = C - A;
+        Vec pvec = vec.cross(AC);
+        float det = AB.dotProduct(pvec);
 
+        // if the determinant is negative the triangle is backfacing
+        // if the determinant is close to 0, the ray misses the triangle
+        if (det < kEpsilon) return false;
 
-    return true;
-}
+        // ray and triangle are parallel if det is close to 0
+        if (fabs(det) < kEpsilon) return false;
+
+        float invDet = 1 / det;
+
+        Vec tvec = orig - A;
+        u = tvec.dotProduct(pvec) * invDet;
+        if (u < 0 || u > 1) return false;
+
+        Vec qvec = tvec.cross(AB);
+        v = vec.dotProduct(qvec) * invDet;
+        if (v < 0 || u + v > 1) return false;
+        
+        t = AC.dotProduct(qvec) * invDet;
+
+        Vec N = AB.cross(AC); // N
+        float denom = N.dotProduct(N);
+        
+        // Step 1: finding P
+        
+        // check if ray and plane are parallel ?
+        float NdotRayDirection = N.dotProduct(vec);
+
+        if (fabs(NdotRayDirection) < kEpsilon) // almost 0
+            return false; // they are parallel so they don't intersect ! 
+
+        // compute d parameter using equation 2
+        float d = -N.dotProduct(A);
+        
+        // compute t (equation 3)
+        t = -(N.dotProduct(orig) + d) / NdotRayDirection;
+        
+        // check if the triangle is in behind the ray
+        if (t < 0) return false; // the triangle is behind
+    
+        // compute the intersection point using equation 1
+        Vec P = orig + t * vec;
+    
+        // Step 2: inside-outside test
+        Vec Q; // vector perpendicular to triangle's plane
+    
+        // edge 0
+        Vec edge0 = B - A; 
+        Vec vp0 = P - A;
+        Q = edge0.cross(vp0);
+        if (N.dotProduct(Q) < 0) return false; // P is on the right side
+    
+        // edge 1
+        Vec edge1 = C - B; 
+        Vec vp1 = P - B;
+        Q = edge1.cross(vp1);
+        if ((u = N.dotProduct(Q)) < 0)  return false; // P is on the right side
+    
+        // edge 2
+        Vec edge2 = A - C; 
+        Vec vp2 = P - C;
+        Q = edge2.cross(vp2);
+        if ((v = N.dotProduct(Q)) < 0) return false; // P is on the right side;
+
+        u /= denom;
+        v /= denom;
+        
+        return true; // this ray hits the triangle
+    }
 
 
 #endif //!VEC_H

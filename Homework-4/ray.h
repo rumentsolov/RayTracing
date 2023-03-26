@@ -18,21 +18,21 @@ class Ray {
 };
 
         int getX(const Ray &r){
-        return r.dir.X();
+        return r.dir.x;
         }
 
         int getY(const Ray &r){
-        return r.dir.Y();
+        return r.dir.y;
         }
 
         int getZ(const Ray &r){
-        return r.dir.Z();
+        return r.dir.z;
         }
 
         float getLength(const Ray &r){
-            float x = r.dir.X() - r.orig.X();
-            float y = r.dir.Y() - r.orig.Y();
-            float z = r.dir.Z() - r.orig.Z();
+            float x = r.dir.x - r.orig.x;
+            float y = r.dir.y - r.orig.y;
+            float z = r.dir.z - r.orig.z;
             std::cout << "X:" << x << " Y:" << y << " Z:" << z << std::endl;
             return sqrt(x * x + y * y + z * z); 
         }
