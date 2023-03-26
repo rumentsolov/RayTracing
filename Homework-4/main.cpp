@@ -26,22 +26,36 @@ C = (-1.56, 0.15, -1.92)
 */
 
 #include "cameraBuff.h"
-#include "triangleBuff.h"
 #include "vec.h"
-#include "object.h"
+
 
 int main() {
 
-
-    CameraBuff buff(600,600 );
-    //buff.record();
-
-    SurfaceBuff triangle( 
-        Vec( 0, 175, -30 ) , 
-        Vec( -175, -175, -30 ) , 
-        Vec( 175, -175, -30 ) , 
-        
-        PixelColor( 255,255,255)); // here will be the rays holder
-
+    CameraBuff buff(900,700 );
+    buff.record();
+    
 	return 0;
 }
+
+/*
+
+bool intersect = rayIntersectsTriangle(origin,vec ,a,b,c);
+
+//if(!intersect) {
+//str[x][y] = PixelColor( 0 , 0 , 0);
+//}
+//else{
+PixelColor color(
+(originX - abs(vec.X()))*colorCoefficient , 
+(originY - abs(vec.Y()))*colorCoefficient , 
+abs(vec.Z())); 
+str[x][y] = color;
+//}
+
+
+
+ Vec a( 0, 175, -30 ); 
+        Vec b( -175, -175, -30 );
+        Vec c( 175, -175, -30 );
+
+*/

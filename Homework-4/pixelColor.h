@@ -12,15 +12,17 @@ public:
     PixelColor(float  first_ ,float  second_ , float  third_) : first(first_), second(second_), third(third_) {}
     ~PixelColor() {}
 
-    void operator=(const PixelColor& other){
-            this->first = other.first;
-            this->second = other.second;
-            this->third = other.third;
-        }
+    PixelColor &operator=(const PixelColor other){
+        
+        this->first = other.first;
+        this->second = other.second;
+        this->third = other.third;
+        return *this;
+    }
 };
 
     std::ostream & operator<<(std::ostream &ppmFS , PixelColor &x){
-       return ppmFS << (int)(abs(x.first)) <<" "<< (int)(abs(x.second))<<" " << (int)(abs(x.third));
+    return ppmFS << (int)(abs(x.first)) <<" "<< (int)(abs(x.second))<<" " << (int)(abs(x.third));
     }
 
     PixelColor operator+(const PixelColor&first, const PixelColor&second){
