@@ -1,5 +1,4 @@
 $ cat .gitignore
-ImageCreator-HW-Lecture-2 copy.vscode/
+# exclude everything except directory
+$ /.vscode/
 main
-
-.fake

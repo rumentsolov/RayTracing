@@ -9,6 +9,7 @@ public:
     float second;
     float third;
     PixelColor():first(0), second(0), third(0) {}
+    PixelColor(float  first_ ) : first(first_), second(first_), third(first_) {}
     PixelColor(float  first_ ,float  second_ , float  third_) : first(first_), second(second_), third(third_) {}
     ~PixelColor() {}
 

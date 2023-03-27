@@ -3,7 +3,7 @@
 
 #include <cmath>
 
-
+ constexpr float kEpsilon = 1e-8;
 
 class Vec {
 public:
@@ -108,16 +108,14 @@ Vec operator/(Vec&A,float t){
 }
 
 
-Vec Vec::cross(const Vec& B) const {
+Vec Vec::cross(const Vec& v) const {
             return Vec{
-                y * B.z - z *B.y ,
-                z * B.x - x *B.z ,
-                x * B.y - y *B.x
+               y * v.z - z * v.y, z * v.x - x * v.z, x * v.y - y * v.x
             };
         }
 
-float Vec::dotProduct(const Vec& B) const {
-    return (x * B.x + y * B.y + z * B.z);
+float Vec::dotProduct(const Vec& v) const {
+    return (x * v.x + y * v.y + z * v.z);
 }
 
 bool rayTriangleIntersect(
@@ -125,15 +123,12 @@ bool rayTriangleIntersect(
     const Vec &vec,
     const Vec &A,
     const Vec &B, 
-    const Vec &C
-    //float &t, 
-    //float &u, 
-    //float &v
+    const Vec &C,
+    float &t, 
+    float &u, 
+    float &v
     )
     {
-        
-        constexpr float kEpsilon = 1e-8;
-        float t = 0, u =0, v = 0;
 
         Vec AB = B - A;
         Vec AC = C - A;
@@ -141,6 +136,7 @@ bool rayTriangleIntersect(
         float det = AB.dotProduct(pvec);
 
         // if the determinant is negative the triangle is backfacing
+
         // if the determinant is close to 0, the ray misses the triangle
         if (det < kEpsilon) return false;
 

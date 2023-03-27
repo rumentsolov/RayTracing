@@ -4,7 +4,7 @@
 
 int main() {
 
-    CameraBuff buff(1900,1400 );
+    CameraBuff buff(1300,1400 );
     buff.record();
     
 	return 0;

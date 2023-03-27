@@ -27,23 +27,24 @@ public:
     CameraBuff(int imageX_, int imageY_) : imageX(imageX_), imageY(imageY_) , str( new PixelColor*[imageX])
     {
 
-    Vec origin(0,0,0);
+    Vec origin(0);
     Vec focalVec(0,0,-500);
     Vec topLeftImageCornerVec(origin.x - imageX/2,origin.y +imageY/2,focalVec.z); 
     //! Colors should change between 0 and 255 so we need that coefficient to split the color step true all the pixels
     colorCoefficient = 254.99999/(topLeftImageCornerVec.length() - focalVec.length());
-    std::cout << "Color coefficient :" << colorCoefficient << std::endl; //! focalVec is the smalles vector always
+    std::cout << "Color coefficient :" << colorCoefficient << std::endl; //! the focalVec is the smalles vector always
 
     float originX = focalVec.x;
     float originY = focalVec.y;
     float originZ = focalVec.z;
-    Vec a( 0, 175, -30 ); 
-    Vec b( -175, -175, -30 );
-    Vec c( 175, -175, -30 );
+    Vec a(-100, -100, -300);
+    Vec b( 100, -100, -300);
+    Vec c( 0,  100, -300);
     
     float fov = 51.52;
     float scale = tan(deg2rad(fov * 0.5));
     float imageAspectRatio = imageX / (float)imageY;
+    float t , u , v ;
 
     std::cout << "scale: " << scale << std::endl;
 
@@ -62,9 +63,9 @@ public:
                         (originY - abs(vec.y))*colorCoefficient , 
                         abs(vec.z)); 
                 vec.normalize();
-                bool intersect = rayTriangleIntersect(origin,vec ,a,b,c);
+                bool intersect = rayTriangleIntersect(origin,vec ,a,b,c , t , u , v );
                 str[x][y] = color;
-                if(intersect) str[x][y] = PixelColor( 255 , 255 , 255);
+                if(intersect) str[x][y] = PixelColor( 255 );
                 }
         }
     }
