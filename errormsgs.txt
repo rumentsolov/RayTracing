@@ -1,7 +1,0 @@
-argument types are: (int, Vec, int, Vec, int, Vec, int)
-
-no matching function for call to ‘ObjectBuff::ObjectBuff(int&, Vec, int, Vec, int, Vec, int)’
-
-1) кои лъчи се пресичат с равнината, в която се намира триъгълника : ако лъча не е успореден на равнината значи се пресича
-2) дефиниране на плейна, чрез точна в пространството и вектор, който е перпендикулярен на равнината
-
