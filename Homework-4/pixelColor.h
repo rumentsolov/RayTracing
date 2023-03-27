@@ -3,8 +3,7 @@
 
 #include <fstream>
 
-class PixelColor {
-public:
+struct PixelColor {
     float first;
     float second;
     float third;

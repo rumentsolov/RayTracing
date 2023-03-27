@@ -7,10 +7,10 @@ int main() {
     //! All user inputs are in image PIXELS
 
     // The size of the image by X axis
-    int imageX = 1920; 
+    int imageX = 920; 
 
     // The size of the image by Y axis
-    int imageY = 1080;
+    int imageY = 680;
 
     ImgBuff buff(imageX, imageY);
 
@@ -21,7 +21,7 @@ int main() {
     int squaresY = imageY/30;
 
     // The radius of the circle that user wants to be drawn
-    int radius = 300 ; 
+    int radius = 150 ; 
 
     drawSquares(buff, squaresX , squaresY ); // Fills the image buffer fields with random colors by squares
 
