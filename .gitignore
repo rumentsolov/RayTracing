@@ -1,3 +1,3 @@
  $ cat .gitignore
     **/main
-    $ echo '!/vmlinux*' >arch/foo/kernel/.gitignore
+    $ /.gitignore
