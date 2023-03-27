@@ -1,4 +1,4 @@
 $ cat .gitignore
 # exclude everything except directory
-$ /.vscode/
+$ .vscode/**
 main
