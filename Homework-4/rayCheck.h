@@ -15,7 +15,7 @@ bool rayIntersectionCheck(
         Vec vec = raySent.direction(); // for easier access
         Vec orig = raySent.origin();
 
-        Vec triangleNormalVec = vec.cross(t.AC); // this is the triangle's normal
+        Vec triangleNormalVec = vec.crossProduct(t.AC); // this is the triangle's normal
 
         //! Step 1: Comparing triangle's normal with direction
         float det = t.AB.dotProduct(triangleNormalVec);
@@ -26,8 +26,8 @@ bool rayIntersectionCheck(
         float invDet = 1 / det;
 
         Vec tvec = orig - t.A;
-        Vec qvec = tvec.cross(t.AB);
-        Vec N = t.AB.cross(t.AC); // N
+        Vec qvec = tvec.crossProduct(t.AB);
+        Vec N = t.AB.crossProduct(t.AC); // N
 
         float i, j, k;
 
@@ -59,15 +59,15 @@ bool rayIntersectionCheck(
         //! Step 3: inside-outside test => checks if P Inside or Outside my Triangle
         Vec Q; // vector perpendicular to triangle's plane
 
-        Q = t.e0.cross(t.v0(P));
+        Q = t.e0.crossProduct(t.v0(P));
 
         if (N.dotProduct(Q) < 0) return false; // P is on the right side
 
-        Q = t.e1.cross(t.v1(P));
+        Q = t.e1.crossProduct(t.v1(P));
 
         if ((j = N.dotProduct(Q)) < 0)  return false; // P is on the right side
     
-        Q = t.e2.cross(t.v2(P));
+        Q = t.e2.crossProduct(t.v2(P));
 
         if ((k = N.dotProduct(Q)) < 0) return false; // P is on the right side;
 

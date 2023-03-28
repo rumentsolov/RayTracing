@@ -24,9 +24,6 @@ struct Vec {
         Vec operator * (const float &r) const
         { return Vec(x * r, y * r, z * r); }
 
-        Vec operator * (const Vec &v) const
-        { return Vec(x * v.x, y * v.y, z * v.z); }
-
         Vec& operator /= (const float &r)
         { x /= r, y /= r, z /= r; return *this; }
 
@@ -47,7 +44,7 @@ struct Vec {
         return *this;
         }
 
-        Vec cross(const Vec& B) const ;
+        Vec crossProduct(const Vec& B) const ;
 
         float dotProduct(const Vec& B) const;
 
@@ -93,14 +90,20 @@ Vec operator/(Vec&A,float t){
         A.z * (1/t) );
 }
 
-Vec Vec::cross(const Vec& v) const {
+Vec Vec::crossProduct(const Vec& v) const {
             return Vec{
-               y * v.z - z * v.y, z * v.x - x * v.z, x * v.y - y * v.x
+               y * v.z - z * v.y, 
+               z * v.x - x * v.z, 
+               x * v.y - y * v.x
             };
 }
 
 float Vec::dotProduct(const Vec& v) const {
     return (x * v.x + y * v.y + z * v.z);
+}
+
+std::ostream & operator<<(std::ostream &ppmFS , const Vec &v) {
+return ppmFS << v.x <<" "<< v.y<<" " << v.z ;
 }
 
 #endif //!VEC_H

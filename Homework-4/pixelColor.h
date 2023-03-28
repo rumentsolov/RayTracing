@@ -21,7 +21,7 @@ struct PixelColor {
     }
 };
 
-    std::ostream & operator<<(std::ostream &ppmFS , PixelColor &x){
+    std::ostream & operator<<(std::ostream &ppmFS , const PixelColor &x){
     return ppmFS << (int)(abs(x.first)) <<" "<< (int)(abs(x.second))<<" " << (int)(abs(x.third));
     }
 
