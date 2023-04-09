@@ -18,15 +18,24 @@ int main() {
     Vec origin(0);
     Vec focalVec(0,0,-100); // distance from origin to image
 
-    Triangle t(
-    Vec(-1.75, -1.75, -3),
-    Vec( 1.75, -1.75, -3),
-    Vec( 0, 1.75, -3)
+    Triangle t1(
+    Vec(1.75, -0.75, -3),
+    Vec( 4.75, -0.75, -3),
+    Vec( 3.5, 1.75, -3),
+    PixelColor(0,255,155)
+    );
+
+    Triangle t2(
+    Vec(-2.75, 0, -3),
+    Vec( -1.75, 0, -3),
+    Vec( -1.5, 2, -3),
+    PixelColor(0,90,155)
     );
     
-    Triangle arrShapes [1] = {} ;
+    int size = 2;
+    Triangle arrShapes [2] = {t1, t2} ;
 
-    CameraBuff buff(imageX, imageY , origin, focalVec, t);
+    CameraBuff buff(imageX, imageY , origin, focalVec, arrShapes , size);
     buff.record(); 
 
 

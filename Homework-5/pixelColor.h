@@ -13,7 +13,6 @@ struct PixelColor {
     ~PixelColor() {}
 
     PixelColor &operator=(const PixelColor other){
-        
         this->first = other.first;
         this->second = other.second;
         this->third = other.third;
