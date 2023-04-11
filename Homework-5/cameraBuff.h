@@ -12,7 +12,10 @@
 
 // ! the CameraBuff should be printed from left->right && top->bottom as the image is created in the screen
 class CameraBuff { 
+/*
 
+
+*/
 public:
     int imageX;                                 // the size of the image by X axis
     int imageY;                                 // the size of the image by Y axis
