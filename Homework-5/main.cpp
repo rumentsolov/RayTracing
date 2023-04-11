@@ -5,11 +5,7 @@
 int main() {
     
     //! Optimizaions I have to make:
-    // 1) All object to be from type Vec ( Vertex || Point)
-    // 2) Image Buff can be allocated in single Vec instead of 2D array
-    // 3) PixelColor uses floats so size can be smaller ( unsigned char )
-    // 4) To check for unused operator overloading function
-    // 5) Ternary operator are quicker than if!!!
+    // 1) PixelColor to be unsigned char
     
     int imageX = 650; // the size of the image by X axis
     int imageY = 560; 
