@@ -18,7 +18,7 @@ public:
     int imageY;                                 // the size of the image by Y axis
     float colorCoefficient;
     Vec origin;
-    Vec focalVec; // distance from origin to image
+    Vec forwardVec; // distance from origin to image
     std::string fileName = "homework-6.ppm";//the image name
     PixelColor** ptr;
     Triangle (&arrShapes)[];
@@ -28,20 +28,20 @@ public:
         int imageX_, 
         int imageY_  , 
         Vec origin_ , 
-        Vec focalVec_ , 
+        Vec forwardVec_ , 
         Triangle (&arrShapes_)[],
         int size_ )
         :
         imageX(imageX_), 
         imageY(imageY_) , 
         origin(origin_) , 
-        focalVec(focalVec_) , 
+        forwardVec(forwardVec_) , 
         arrShapes(arrShapes_) , 
         size(size_),
         ptr( new PixelColor*[imageX])
     {
 
-    Vec topLeftImageCornerVec(origin.x - imageX/2,origin.y +imageY/2,focalVec.z); 
+    Vec topLeftImageCornerVec(origin.x - imageX/2,origin.y +imageY/2,forwardVec.z); 
     bool mty; // tpo use ternary isntead of If else or debug assert
         for (int x = 0; x < imageX; x++) ptr[x] = new PixelColor[imageY]{PixelColor(0)}; //  Allocates memory for rows
         
@@ -84,7 +84,6 @@ void CameraBuff::record(){ // transfers the CameraBuff to the ostream
         for (int x = 0; x < imageX; x++) { {
             ppmFS<< ptr[x][y];
         }
-    ppmFS << "\n";
     }
     ppmFS.close();
 }
