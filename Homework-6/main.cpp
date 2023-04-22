@@ -2,8 +2,13 @@
 #include "shapes.h"
 #include "randoms.h"
 
+#include <iomanip>
+#include <chrono>
+using namespace std::chrono;
+
 int main() {
-    
+    auto start = high_resolution_clock::now();
+
     //! Optimizaions I have to make:
     // 1) PixelColor to be unsigned char
     
@@ -86,7 +91,11 @@ int main() {
     CameraBuff buff(imageX, imageY , origin, focalVec, arrShapes , size);
     buff.record(); 
 
+    auto stop = high_resolution_clock::now();
 
-
+    auto duration = duration_cast<microseconds>(stop - start);
+    std::cout.setf(std::ios::fixed);
+    std::cout.precision(3);
+    std::cout << duration.count() /1000000<< std::endl;
 	return 0;
 }

@@ -15,10 +15,10 @@ bool rayIntersectionCheck(
         Vec vec = raySent.direction(); // for easier access
         Vec orig = raySent.origin();
 
-        Vec normalVec = vec.crossProduct(t.AC); // this is the triangle's normal
+        Vec normalVec = vec.crossProduct(t.AC); // this is the triangle's normal intersection
 
         //! Step 1: Comparing triangle's normal with direction
-        float det = t.AB.dotProduct(normalVec);
+        float det = t.AB.dotProduct(normalVec); // => normal vector can be calculated inside the triangle
         // if the direction is negative the triangle is backfacing
 
         if (det < kEpsilon || fabs(det) < kEpsilon) return false; // if the direction is negative || close to 0, the ray misses the triangle
