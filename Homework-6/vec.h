@@ -2,6 +2,7 @@
 #define VEC_H
 
 #include <cmath>
+#include <sstream>
 
 struct Vec {
     float x;

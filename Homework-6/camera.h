@@ -1,6 +1,14 @@
 #include "vec.h"
 
 class Camera {
+public:
+Vec origin;
+Vec focalVec; // distance from origin to image
+
+Camera() : origin(0), focalVec(0){}
+Camera(Vec origin_, Vec focalVec_) : origin(origin_), focalVec(focalVec_){
+    
+}
     /*
 public :
     void truck(const Vec & moveDir) {

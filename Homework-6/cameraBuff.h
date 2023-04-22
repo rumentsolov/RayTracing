@@ -12,18 +12,15 @@
 
 // ! the CameraBuff should be printed from left->right && top->bottom as the image is created in the screen
 class CameraBuff { 
-/*
 
-
-*/
 public:
     int imageX;                                 // the size of the image by X axis
     int imageY;                                 // the size of the image by Y axis
     float colorCoefficient;
     Vec origin;
     Vec focalVec; // distance from origin to image
-    std::string fileName = "homework-5.ppm";//the image name
-    PixelColor** str;
+    std::string fileName = "homework-6.ppm";//the image name
+    PixelColor** ptr;
     Triangle (&arrShapes)[];
     int size;
 
@@ -41,16 +38,12 @@ public:
         focalVec(focalVec_) , 
         arrShapes(arrShapes_) , 
         size(size_),
-        str( new PixelColor*[imageX])
+        ptr( new PixelColor*[imageX])
     {
 
     Vec topLeftImageCornerVec(origin.x - imageX/2,origin.y +imageY/2,focalVec.z); 
     bool mty; // tpo use ternary isntead of If else or debug assert
-    float originX = focalVec.x;
-    float originY = focalVec.y;
-    float originZ = focalVec.z;
-
-        for (int x = 0; x < imageX; x++) str[x] = new PixelColor[imageY]; //  Allocates memory for rows
+        for (int x = 0; x < imageX; x++) ptr[x] = new PixelColor[imageY]{PixelColor(0)}; //  Allocates memory for rows
         
         // Fills the CameraBuff with color according the vec length
         for (int y = 0; y < imageY; y++)
@@ -63,13 +56,11 @@ public:
                     topLeftImageCornerVec.z
                     ); // - y due to image y is backwards on real Y axis
                     Ray raySent(origin, vec);
-                    str[x][y] = PixelColor(0);
                     for(int e = 0; e < size;e++){
                         //vec.normalize(); // No need to normalize it  
                         (rayIntersectionCheck(raySent ,arrShapes[e] ) == true )? 
-                        str[x][y] = arrShapes[e].tColor : 
+                        ptr[x][y] = arrShapes[e].tColor : 
                         mty = false; // ternary is qiucker check than if
-                        //str[x][y] = PixelColor(0);
                     }
                 }
         }
@@ -78,9 +69,9 @@ public:
 
     ~CameraBuff() {
         for (int i = 0; i < imageX; i++) {
-        delete[] str[i];
+        delete[] ptr[i];
         }
-        delete[] str;
+        delete[] ptr;
     };
 };
 
@@ -91,7 +82,7 @@ void CameraBuff::record(){ // transfers the CameraBuff to the ostream
     
     for (int y = 0; y < imageY; y++)
         for (int x = 0; x < imageX; x++) { {
-            ppmFS<< str[x][y];
+            ppmFS<< ptr[x][y];
         }
     ppmFS << "\n";
     }
