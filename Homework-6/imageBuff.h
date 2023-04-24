@@ -2,11 +2,7 @@
 #define IMG_BUFF_H
 
 #include "pixelColor.h"
-#include "vec.h"
-#include "ray.h"
-#include "rayCheck.h"
-#include "camera.h"
-#include <iostream>
+#include <fstream>
 
 //? This is the image's pixel color holder
 
@@ -25,11 +21,14 @@ public:
         str( new PixelColor*[imageX])
     {
         
-        for (int x = 0; x < imageX; x++) str[x] = new PixelColor[imageY]; //  Allocates memory for rows
-        Triangle *array = Scene();
+        for (int x = 0; x < imageX; x++) str[x] = new PixelColor[imageY]{PixelColor(0)}; //  Allocates memory for rows
+        //
         //Camera camera;
     }
         void record();// the ostream record
+        void setColor(int x, int y , PixelColor newColor) {
+             str[x][y] = newColor;
+        };
 
     ~ImageBuff() {
         for (int i = 0; i < imageX; i++) {
@@ -48,7 +47,6 @@ void ImageBuff::record(){ // transfers the ImageBuff to the ostream
         for (int x = 0; x < imageX; x++) { {
             ppmFS<< str[x][y];
         }
-    ppmFS << "\n";
     }
     ppmFS.close();
 }

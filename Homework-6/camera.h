@@ -1,33 +1,12 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 #include "vec.h"
-#include "shapes.h"
-
 class Camera {
 public:
-int imageX;                                 // the size of the image by X axis
-int imageY;                                 // the size of the image by Y axis
 Vec origin;
 Vec forwardVec; // distance from origin to image
-Vec topLeftImageCornerVec; 
-Triangle (&arrShapes)[];
-int size;
 
-Camera(
-    Vec origin_, 
-    Vec forwardVec_ , 
-    int imageX_,
-    int imageY_ , 
-    Triangle (&arrShapes_)[],
-    int size_ )
-    : 
-    origin(origin_), 
-    forwardVec(forwardVec_) , 
-    imageX(imageX_), 
-    imageY(imageY_) , 
-    topLeftImageCornerVec(origin.x - imageX/2,origin.y +imageY/2,forwardVec.z),
-    arrShapes(arrShapes_) , 
-    size(size_)
+Camera(Vec origin_,  Vec forwardVec_ ) : origin(origin_), forwardVec(forwardVec_) 
 {
 
 }
