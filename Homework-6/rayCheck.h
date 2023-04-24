@@ -27,7 +27,6 @@ bool rayIntersectionCheck(
 
         Vec tvec = orig - t.A;
         Vec qvec = tvec.crossProduct(t.AB);
-        Vec N = t.AB.crossProduct(t.AC); // N
 
         float i, j, k;
 
@@ -42,14 +41,14 @@ bool rayIntersectionCheck(
         //! Step 2: finding P => the point where the ray intersects the plane
         
         // check if ray and plane are parallel ?
-        float NdotRayDirection = N.dotProduct(vec);
+        float NdotRayDirection = t.normalV.dotProduct(vec);
 
         if (fabs(NdotRayDirection) < kEpsilon) // almost 0
             return false; // they are parallel => no intersection
 
-        float d = -N.dotProduct(t.A); // the distance from the origin to the plane (if we trace a line from the origin to the plane, parallel to the plane's normal)
+        float d = -t.normalV.dotProduct(t.A); // the distance from the origin to the plane (if we trace a line from the origin to the plane, parallel to the plane's normal)
         
-        i = -(N.dotProduct(orig) + d) / NdotRayDirection;
+        i = -(t.normalV.dotProduct(orig) + d) / NdotRayDirection;
         
         // check if the triangle is in behind the ray
         if (i < 0) return false; // the triangle is behind => no intersection
@@ -61,15 +60,15 @@ bool rayIntersectionCheck(
 
         Q = t.e0.crossProduct(t.v0(P));
 
-        if (N.dotProduct(Q) < 0) return false; // P is on the right side
+        if (t.normalV.dotProduct(Q) < 0) return false; // P is on the right side
 
         Q = t.e1.crossProduct(t.v1(P));
 
-        if ((j = N.dotProduct(Q)) < 0)  return false; // P is on the right side
+        if ((j = t.normalV.dotProduct(Q)) < 0)  return false; // P is on the right side
     
         Q = t.e2.crossProduct(t.v2(P));
 
-        if ((k = N.dotProduct(Q)) < 0) return false; // P is on the right side;
+        if ((k = t.normalV.dotProduct(Q)) < 0) return false; // P is on the right side;
 
         return true; // means this ray hits the triangle
 }

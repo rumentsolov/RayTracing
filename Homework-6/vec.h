@@ -55,10 +55,10 @@ struct Vec {
         Vec& normalize()
         {
             float n = norm();
-            if (n > 0) {
-                float factor = 1 / sqrt(n);
-                x *= factor, y *= factor, z *= factor;
-            }
+            
+            n > 0 ?
+                x *= 1 / sqrt(n), y *= 1 / sqrt(n), z *= 1 / sqrt(n)
+            : 0;
             
             return *this;
         }

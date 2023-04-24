@@ -3,15 +3,29 @@
 class Camera {
 public:
 Vec origin;
-Vec focalVec; // distance from origin to image
+Vec imgResolution;
+Vec forwardVec; // distance from origin to image
+Vec topLeftImageCornerVec; 
 
-Camera() : origin(0), focalVec(0){}
-Camera(Vec origin_, Vec focalVec_) : origin(origin_), focalVec(focalVec_){
-    
+Camera() : origin(0), forwardVec(0){}
+
+Camera(Vec origin_, Vec forwardVec_ , Vec imgResolution_ ) : 
+origin(origin_), 
+forwardVec(forwardVec_) , 
+imgResolution(imgResolution_),
+topLeftImageCornerVec(origin.x - imgResolution.x/2,origin.y +imgResolution.y/2,forwardVec.z)
+{
+
 }
+
+void cameraTruck(){};
+void cameraPiedestal(){};
+
+
+
     /*
 public :
-    void truck(const Vec & moveDir) {
+    void truck(const Vec & moveDir) { // moving camer left || right direction
     const Vec moveDirInWorldSpace = moveDir * rotationMatrix;
     position += moveDirInWorldSpace;
     }

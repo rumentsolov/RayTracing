@@ -11,11 +11,10 @@ int main() {
     auto start = high_resolution_clock::now(); // I measure the time for completion of the program with the idea to optimise it
 
     //! Optimizaions I have to make:
-    // 1) PixelColor to be unsigned char
+    // 1) Calculate triangle normals in Triangle class
     
-    int imageX = 1000; // the size of the image by X axis
-    int imageY = 1000; 
-
+     std::string fileName = "homework-6.ppm";
+    Vec resolution(1000,1000,0);
     Vec origin(0);
     Vec focalVec(0,0,-100); // distance from origin to image
 
@@ -83,12 +82,12 @@ int main() {
         PixelColor(getRandNum())
     );
 
-
     const int size = 8;
     Triangle arrShapes [size] = {t1,t2,t3,t4,t5,t6,t7,t8} ;
 
+    Camera camera1( origin, focalVec , resolution);
 
-    CameraBuff buff(imageX, imageY , origin, focalVec, arrShapes , size);
+    CameraBuff buff(fileName, camera1, arrShapes , size);
     buff.record(); 
 
     // Below are some measurements info :
