@@ -1,19 +1,33 @@
+#ifndef CAMERA_H
+#define CAMERA_H
 #include "vec.h"
+#include "shapes.h"
 
 class Camera {
 public:
+int imageX;                                 // the size of the image by X axis
+int imageY;                                 // the size of the image by Y axis
 Vec origin;
-Vec imgResolution;
 Vec forwardVec; // distance from origin to image
 Vec topLeftImageCornerVec; 
+Triangle (&arrShapes)[];
+int size;
 
-Camera() : origin(0), forwardVec(0){}
-
-Camera(Vec origin_, Vec forwardVec_ , Vec imgResolution_ ) : 
-origin(origin_), 
-forwardVec(forwardVec_) , 
-imgResolution(imgResolution_),
-topLeftImageCornerVec(origin.x - imgResolution.x/2,origin.y +imgResolution.y/2,forwardVec.z)
+Camera(
+    Vec origin_, 
+    Vec forwardVec_ , 
+    int imageX_,
+    int imageY_ , 
+    Triangle (&arrShapes_)[],
+    int size_ )
+    : 
+    origin(origin_), 
+    forwardVec(forwardVec_) , 
+    imageX(imageX_), 
+    imageY(imageY_) , 
+    topLeftImageCornerVec(origin.x - imageX/2,origin.y +imageY/2,forwardVec.z),
+    arrShapes(arrShapes_) , 
+    size(size_)
 {
 
 }
@@ -45,3 +59,11 @@ public :
     Matrix RotationMatrix;
     Vec position;*/
 };
+
+/*
+void Render(PixelColor** ptr, Camera &camera,int &size,Triangle (&arrShapes)[]){
+        
+  
+}
+*/
+#endif //! CAMERA_H
